@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ai_banh_my_khong_dat_g.uicomponent.mainui.MainUIFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CenterLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:transformPivotX="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/CL_PagerNavigator"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/color_white"
+            app:layout_constraintBottom_toTopOf="@+id/CL_BottomNavigator"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/CL_BottomNavigator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_dark_pink"
+            app:itemIconTint="@color/color_white"
+            app:itemTextColor="@color/text_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/mainui_bottom_navigator"
+            tools:ignore="VisualLintBottomNav"
+            tools:itemIconTint="@color/color_white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/CenterLayoutBlocker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="#80000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/SideNavigator"
+        android:layout_width="225dp"
+        android:layout_height="match_parent"
+        android:background="@color/mainui_sidebar_color"
+        android:translationX="-225dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds">
+
+        <Button
+            android:id="@+id/SN_TouchBlocker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00FFFFFF"
+            android:text="Hided"
+            android:textColor="#00FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,TouchTargetSizeCheck,TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/SN_UserImage"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_corner_96x96x96x96_dark_pink"
+            android:src="@drawable/icon_bugreport"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_bugreport"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/SN_UserNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/test_user_name"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@+id/SN_UserImage"
+            app:layout_constraintTop_toBottomOf="@+id/SN_UserImage" />
+
+        <TextView
+            android:id="@+id/SN_UserEmailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/test_user_email"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/SN_UserImage"
+            app:layout_constraintTop_toBottomOf="@+id/SN_UserNameText" />
+
+        <Space
+            android:id="@+id/SN_Space"
+            android:layout_width="wrap_content"
+            android:layout_height="96dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SN_UserEmailText" />
+
+        <ImageView
+            android:id="@+id/SN_AccountImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SN_Space"
+            app:srcCompat="@drawable/icon_account"
+            app:tint="@color/text_dark_pink"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/SN_PaymentImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="@+id/SN_AccountImage"
+            app:layout_constraintTop_toBottomOf="@+id/SN_AccountImage"
+            app:srcCompat="@drawable/icon_payment"
+            app:tint="@color/text_dark_pink"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/SN_SettingImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="@+id/SN_PaymentImage"
+            app:layout_constraintTop_toBottomOf="@+id/SN_PaymentImage"
+            app:srcCompat="@drawable/icon_settings"
+            app:tint="@color/text_dark_pink"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/SN_HelpImage"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="@+id/SN_SettingImage"
+            app:layout_constraintTop_toBottomOf="@+id/SN_SettingImage"
+            app:srcCompat="@drawable/icon_help"
+            app:tint="@color/text_dark_pink"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/SN_AccountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/account"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/SN_AccountImage"
+            app:layout_constraintStart_toEndOf="@+id/SN_AccountImage"
+            app:layout_constraintTop_toTopOf="@+id/SN_AccountImage" />
+
+        <TextView
+            android:id="@+id/SN_PaymentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/payment"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/SN_PaymentImage"
+            app:layout_constraintStart_toEndOf="@+id/SN_PaymentImage"
+            app:layout_constraintTop_toTopOf="@+id/SN_PaymentImage" />
+
+        <TextView
+            android:id="@+id/SN_SettingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/setting"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/SN_SettingImage"
+            app:layout_constraintStart_toEndOf="@+id/SN_SettingImage"
+            app:layout_constraintTop_toTopOf="@+id/SN_SettingImage" />
+
+        <TextView
+            android:id="@+id/SN_HelpText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/help"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/SN_HelpImage"
+            app:layout_constraintStart_toEndOf="@+id/SN_HelpImage"
+            app:layout_constraintTop_toTopOf="@+id/SN_HelpImage" />
+
+        <Button
+            android:id="@+id/SN_LogoutButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_corner_48x48x48x48_brown"
+            android:text="@string/logout"
+            android:textSize="14sp"
+            app:backgroundTint="@color/color_brown"
+            app:icon="@drawable/icon_logout"
+            app:iconGravity="textStart"
+            app:iconSize="@dimen/icon_size_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

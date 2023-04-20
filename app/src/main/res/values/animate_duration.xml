@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="very_fast">325</integer>
+    <integer name="fast">750</integer>
+    <integer name="normal">1000</integer>
+    <integer name="slow">1500</integer>
+    <integer name="very_slow">2000</integer>
+</resources>

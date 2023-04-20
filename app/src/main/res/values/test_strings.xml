@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="test_mainui_item_DefaultPriceDown">50%</string>
+    <string name="test_mainui_item_DefaultName">Tên hàng</string>
+    <string name="test_mainui_item_DefaultPrice1">100.000đ</string>
+    <string name="test_mainui_item_DefaultPrice2">200.000đ</string>
+
+    <string name="test_mainui_item_Name1">Black Forest</string>
+    <string name="test_mainui_item_Name2">Red Velvet</string>
+    <string name="test_mainui_item_Name3">Red Shit</string>
+    <string name="test_mainui_item_Name4">Moi da den</string>
+    <string name="test_mainui_item_Name5">Niggah</string>
+
+    <string name="test_ItemDescription_Name">Black Forest</string>
+    <string name="test_ItemDescription_Description">Red Velveadadkadkadkskadkst</string>
+
+</resources>

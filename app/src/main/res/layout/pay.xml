@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/ExitImage"
+        android:layout_width="@dimen/icon_size_2"
+        android:layout_height="@dimen/icon_size_3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_left"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/LayoutTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pay"
+        android:textColor="@color/color_dark_pink"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ExitImage"
+        app:layout_constraintStart_toEndOf="@+id/ExitImage"
+        app:layout_constraintTop_toTopOf="@+id/ExitImage" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/AddedPaymentMethodLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_32x32x32x32_white_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutTitleText">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/HL_Image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:scaleType="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/rounded_16"
+            app:srcCompat="@drawable/test_image_4" />
+
+        <TextView
+            android:id="@+id/APML_TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/name"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/HL_Image"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/HL_ItemListText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="... và 1 sản phẩm khác"
+            android:textColor="@color/color_dark_pink"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/APML_TitleText"
+            app:layout_constraintTop_toBottomOf="@+id/APML_TitleText"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ActionLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner_16x16x16x16_white_pink"
+        app:layout_constraintEnd_toEndOf="@+id/AddedPaymentMethodLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/AddedPaymentMethodLayout"
+        app:layout_constraintTop_toBottomOf="@+id/AddedPaymentMethodLayout">
+
+        <TextView
+            android:id="@+id/IL_DeliveryAddressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/delivery_address"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <EditText
+            android:id="@+id/IL_DeliveryAddressField"
+            style="@style/croz_dark_pink_text_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:autofillHints=""
+            android:backgroundTint="@color/color_brown"
+            android:ems="10"
+            android:inputType="text"
+            android:minHeight="32dp"
+            android:textColor="@color/color_brown"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/IL_DeliveryAddressText"
+            app:layout_constraintTop_toBottomOf="@+id/IL_DeliveryAddressText"
+            tools:ignore="LabelFor,SpeakableTextPresentCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/IL_CouponTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/coupon_code"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/IL_DeliveryAddressField"
+            app:layout_constraintTop_toBottomOf="@+id/IL_DeliveryAddressField"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/IL_CouponText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Không có mã giảm giá"
+            app:layout_constraintStart_toStartOf="@+id/IL_CouponTitleText"
+            app:layout_constraintTop_toBottomOf="@+id/IL_CouponTitleText"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/IL_CouponSelectButton"
+            style="@style/croz_rounded_button"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="@string/select"
+            android:textSize="8sp"
+            app:backgroundTint="@color/color_brown"
+            app:layout_constraintBottom_toBottomOf="@+id/IL_CouponText"
+            app:layout_constraintEnd_toEndOf="@+id/IL_DeliveryAddressField"
+            app:layout_constraintTop_toTopOf="@+id/IL_CouponTitleText"
+            tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/IL_PaymentMethodTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/payment"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/IL_CouponTitleText"
+            app:layout_constraintTop_toBottomOf="@+id/IL_CouponText"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/IL_PaymentMethodText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Momo e-wallet 642****FK"
+            app:layout_constraintStart_toStartOf="@+id/IL_PaymentMethodTitleText"
+            app:layout_constraintTop_toBottomOf="@+id/IL_PaymentMethodTitleText"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/IL_CouponSelectButton2"
+            style="@style/croz_rounded_button"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="@string/select"
+            android:textSize="8sp"
+            app:backgroundTint="@color/color_brown"
+            app:layout_constraintBottom_toBottomOf="@+id/IL_PaymentMethodText"
+            app:layout_constraintEnd_toEndOf="@+id/IL_CouponSelectButton"
+            app:layout_constraintTop_toTopOf="@+id/IL_PaymentMethodTitleText"
+            tools:ignore="SmallSp,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/IL_TotalPriceTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="@string/total"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/IL_CouponText"
+            app:layout_constraintTop_toBottomOf="@+id/IL_PaymentMethodText"
+            tools:ignore="TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/IL_PriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100.000 đ"
+            android:textColor="@color/text_brown"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/IL_TotalPriceTitleText"
+            app:layout_constraintEnd_toEndOf="@+id/IL_CouponSelectButton2"
+            app:layout_constraintTop_toTopOf="@+id/IL_TotalPriceTitleText"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/IL_RealPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="50.000 đ"
+            android:textColor="@color/text_brown"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/IL_PriceText"
+            app:layout_constraintTop_toBottomOf="@+id/IL_PriceText"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/ConfirmButton"
+        style="@style/croz_rounded_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/confirm"
+        app:backgroundTint="@color/color_brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

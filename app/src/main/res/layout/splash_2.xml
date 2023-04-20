@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_grad_2"
+    tools:context="com.example.ai_banh_my_khong_dat_g.uicomponent.splash.Splash2Fragment">
+
+
+    <ImageView
+        android:id="@+id/LoadingCircleImage"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:src="@drawable/icon_loading"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:tint="#FFFFFF"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/LoadingLogoImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/icon_hamburger"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.4"
+        app:tint="@color/color_dark_pink"
+        tools:ignore="contentDescription" />
+
+    <TextView
+        android:id="@+id/OL_D_Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="casual"
+        android:text="@string/title_1"
+        android:textColor="@color/color_black"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoadingCircleImage" />
+
+    <TextView
+        android:id="@+id/TitleText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="@string/title_2"
+        android:textColor="@color/text_white"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/OL_D_Title" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

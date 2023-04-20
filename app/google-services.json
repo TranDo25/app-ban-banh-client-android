@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "398986393732",
+    "firebase_url": "https://android-app-ban-banh-default-rtdb.firebaseio.com",
+    "project_id": "android-app-ban-banh",
+    "storage_bucket": "android-app-ban-banh.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398986393732:android:4603d17c9a8ef6f6e26ad1",
+        "android_client_info": {
+          "package_name": "com.example.ai_banh_my_khong_dat_g"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398986393732-hae451et3s5d4aagk6ge6959ttm00go5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaxGFF-tps3X0DwBElh01y45Q7f_Cbd40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398986393732-hae451et3s5d4aagk6ge6959ttm00go5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398986393732:android:78997fa7632e860ce26ad1",
+        "android_client_info": {
+          "package_name": "com.example.app_ban_banh_dang_nhap_firebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398986393732-hae451et3s5d4aagk6ge6959ttm00go5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaxGFF-tps3X0DwBElh01y45Q7f_Cbd40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398986393732-hae451et3s5d4aagk6ge6959ttm00go5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398986393732:android:b69f60449b0d315ae26ad1",
+        "android_client_info": {
+          "package_name": "com.example.croz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398986393732-hae451et3s5d4aagk6ge6959ttm00go5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaxGFF-tps3X0DwBElh01y45Q7f_Cbd40"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398986393732-hae451et3s5d4aagk6ge6959ttm00go5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

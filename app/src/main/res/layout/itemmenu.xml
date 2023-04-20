@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/LayoutTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/item_menu"
+        android:textColor="@color/color_dark_pink"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/SearchBarLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_48x48x48x48_white_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutTitleText"
+        tools:background="@drawable/rounded_corner_48x48x48x48_white_pink">
+
+        <ImageView
+            android:id="@+id/SBL_IconImage"
+            android:layout_width="@dimen/icon_size_3"
+            android:layout_height="@dimen/icon_size_3"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_search"
+            app:tint="@color/text_dark_pink"
+            tools:ignore="contentDescription"
+            tools:tint="@color/text_dark_pink" />
+
+        <EditText
+            android:id="@+id/SBL_TextField"
+            style="@style/croz_dark_pink_text_field"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="#00FFFFFF"
+            android:hint="@string/search"
+            android:inputType="textPersonName"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/FilterImage"
+            app:layout_constraintStart_toEndOf="@+id/SBL_IconImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="autoFill,VisualLintTextFieldSize,TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/FilterImage"
+            style="croz"
+            android:layout_width="@dimen/icon_size_3"
+            android:layout_height="@dimen/icon_size_3"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+            app:tint="@color/text_dark_pink"
+            tools:ignore="contentDescription,ImageContrastCheck"
+            tools:tint="@color/text_dark_pink" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ItemFilterRecView"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SearchBarLayout"
+        tools:background="@color/color_white">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/FilterTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/title"
+        android:textColor="@color/text_brown"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ItemFilterRecView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ItemRecView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/color_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FilterTitle" />
+
+    <TextView
+        android:id="@+id/NotFoundText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_found_any_item"
+        android:textColor="@color/color_brown"
+        android:textSize="24sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/ItemRecView"
+        app:layout_constraintEnd_toEndOf="@+id/ItemRecView"
+        app:layout_constraintStart_toStartOf="@+id/ItemRecView"
+        app:layout_constraintTop_toTopOf="@+id/ItemRecView"
+        tools:visibility="gone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

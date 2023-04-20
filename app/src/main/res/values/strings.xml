@@ -1,0 +1,93 @@
+<resources>
+    <string name="number">1</string>
+    <string name="app_name">Croz</string>
+    <string name="null_string">Null</string>
+    <string name="test_string">Test String</string>
+
+    <string name="title_1">Sweet</string>
+    <string name="title_2">Bake shop</string>
+    <string name="username">Tên đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="repeat_password">Nhập lại mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="forgot_password">Quên mật khẩu ?</string>
+    <string name="login_with_facebook">Đăng nhập với Facebook</string>
+    <string name="login_with_google">Đăng nhập với Google</string>
+    <string name="exit">Thoát</string>
+
+    <string name="home">Trang chủ</string>
+    <string name="cart">Giỏ hàng</string>
+    <string name="item_menu">Danh mục</string>
+    <string name="order">Đơn hàng</string>
+    <string name="favourite_item">Ưa thích</string>
+    <string name="contact_us">Liên hệ</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="best_sell">Bán chạy nhất</string>
+    <string name="this_week">Tuần này</string>
+    <string name="item_description">Thông tin sản phẩm</string>
+    <string name="pay">Thanh toán</string>
+    <string name="order_preparing">Đang giao</string>
+    <string name="order_delivering">Đang giao</string>
+    <string name="order_delivered">Đã giao</string>
+    <string name="order_again">Mua lại</string>
+    <string name="total">Tổng</string>
+    <string name="follow">Theo dõi</string>
+    <string name="orderID_title">Mã đơn hàng</string>
+    <string name="name">Tên</string>
+    <string name="title">Tiêu đề</string>
+    <string name="price">Giá thành</string>
+    <string name="description">Mô tả</string>
+    <string name="not_found_any_item">Không tìm thấy sản phẩm</string>
+    <string name="long_description">Mô tả con cặc, đụ má bánh biếc cái đầu lồn. </string>
+    <string name="add_to_cart">Thêm vào giỏ hàng</string>
+    <string name="delivery_address">Địa chỉ nhận hàng</string>
+    <string name="coupon_code">Mã giảm giá</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="select">Chọn</string>
+    <string name="edit">Sửa</string>
+    <string name="email">Địa chỉ email</string>
+    <string name="email_not_found">Không có địa chỉ email</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="phone_not_found">Không có số điện thoại</string>
+    <string name="address">Địa chỉ nhà</string>
+    <string name="address_not_found">Không có địa chỉ nhà</string>
+
+    <string name="order_description">Mô tả đơn hàng</string>
+    <string name="order_state">Trạng thái giao hàng</string>
+    <string name="order_confirmed">Đơn được xác nhận</string>
+    <string name="order_prepaired">Chuẩn bị xong</string>
+    <string name="order_start_delivery">Bắt đầu giao</string>
+    <string name="order_delivery_time">Thời gian dự kiến hoàn thành</string>
+
+    <!---->
+    <string name="cake">Bánh</string>
+    <string name="coffee">Cà phê</string>
+    <string name="hamburger">Hamburger</string>
+    <string name="fruit">Trái cây</string>
+    <string name="cake2">Bánh 2</string>
+
+    <string name="test_user_name">Lê Trường Giang</string>
+    <string name="test_user_email">| gianghn21@gmail.com</string>
+    <string name="account">Tài khoản</string>
+    <string name="payment">Phương thức thanh toán</string>
+    <string name="setting">Cài đặt</string>
+    <string name="help">Trợ giúp</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="added_payment_method">Các phương thức thanh toán hiện có</string>
+    <string name="add_new_payment_method">Thêm phương thức thanh toán</string>
+    <string name="add_bank_card">Thêm thẻ ngân hàng</string>
+    <string name="add_momo_ewallet">Thêm tài khoản Momo</string>
+    <string name="add_zalo_pay">Thêm ví Zalo Pay</string>
+    <string name="input_OTP">Nhập mã OTP</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="lbl_sotien">Số Tiền</string>
+    <string name="lbl_donhang">DEMO</string>
+    <string name="btn_create_order">Tạo Đơn Hàng</string>
+    <string name="txt_amount_init">1000</string>
+    <string name="txt_amount_hint">1000</string>
+    <string name="btn_pay">Thanh Toán</string>
+    <string name="lbl_zptranstoken">zptranstoken</string>
+    <string name="to_webview">To WebView</string>
+    <!---->
+</resources>

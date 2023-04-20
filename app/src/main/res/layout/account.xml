@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ExitImage"
+        android:layout_width="@dimen/icon_size_2"
+        android:layout_height="@dimen/icon_size_3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_left"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/LayoutTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/account"
+        android:textColor="@color/color_dark_pink"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ExitImage"
+        app:layout_constraintStart_toEndOf="@+id/ExitImage"
+        app:layout_constraintTop_toTopOf="@+id/ExitImage" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/HeaderLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_32x32x32x32_white_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutTitleText">
+
+        <ImageView
+            android:id="@+id/HL_UserImage"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/rounded_corner_48x48x48x48_dark_pink"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_bugreport"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/HL_UserNameImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="Họ Và Tên"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/HL_UserImage"
+            tools:ignore="HardcodedText,TextContrastCheck" />
+
+        <ImageView
+            android:id="@+id/HL_EditImage"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/HL_UserNameImage"
+            app:layout_constraintStart_toEndOf="@+id/HL_UserNameImage"
+            app:layout_constraintTop_toTopOf="@+id/HL_UserNameImage"
+            app:srcCompat="@drawable/icon_edit"
+            tools:ignore="ContentDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/BodyLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner_16x16x16x16_white_pink"
+        app:layout_constraintEnd_toEndOf="@+id/HeaderLayout"
+        app:layout_constraintStart_toStartOf="@+id/HeaderLayout"
+        app:layout_constraintTop_toBottomOf="@+id/HeaderLayout">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/EmailLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/EL_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/email"
+                android:textColor="@color/text_dark_pink"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/EL_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/email_not_found"
+                app:layout_constraintStart_toStartOf="@+id/EL_Title"
+                app:layout_constraintTop_toBottomOf="@+id/EL_Title"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/EL_Button"
+                style="@style/croz_rounded_button"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="@string/edit"
+                android:textSize="8sp"
+                app:backgroundTint="@color/color_brown"
+                app:layout_constraintBottom_toBottomOf="@+id/EL_Text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/EL_Title"
+                tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/PhoneLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/EmailLayout"
+            app:layout_constraintStart_toStartOf="@+id/EmailLayout"
+            app:layout_constraintTop_toBottomOf="@+id/EmailLayout">
+
+            <TextView
+                android:id="@+id/PL_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone"
+                android:textColor="@color/text_dark_pink"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/PL_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/phone_not_found"
+                app:layout_constraintStart_toStartOf="@+id/PL_Title"
+                app:layout_constraintTop_toBottomOf="@+id/PL_Title"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/PL_Button"
+                style="@style/croz_rounded_button"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="@string/edit"
+                android:textSize="8sp"
+                app:backgroundTint="@color/color_brown"
+                app:layout_constraintBottom_toBottomOf="@+id/PL_Text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/PL_Title"
+                tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/AddressLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/PhoneLayout"
+            app:layout_constraintStart_toStartOf="@+id/PhoneLayout"
+            app:layout_constraintTop_toBottomOf="@+id/PhoneLayout">
+
+            <TextView
+                android:id="@+id/AL_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address"
+                android:textColor="@color/text_dark_pink"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/AL_Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/address_not_found"
+                app:layout_constraintStart_toStartOf="@+id/AL_Title"
+                app:layout_constraintTop_toBottomOf="@+id/AL_Title"
+                tools:ignore="HardcodedText" />
+
+            <Button
+                android:id="@+id/AL_Button"
+                style="@style/croz_rounded_button"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:text="@string/edit"
+                android:textSize="8sp"
+                app:backgroundTint="@color/color_brown"
+                app:layout_constraintBottom_toBottomOf="@+id/AL_Text"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/LogoutButton"
+        style="@style/croz_rounded_button"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/logout"
+        android:textSize="8sp"
+        app:backgroundTint="@color/color_brown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/BodyLayout"
+        tools:ignore="SmallSp,TouchTargetSizeCheck,DuplicateSpeakableTextCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>

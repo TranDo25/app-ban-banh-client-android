@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/Root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/ExitImage"
+        android:layout_width="@dimen/icon_size_2"
+        android:layout_height="@dimen/icon_size_3"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_left"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/LayoutTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/payment"
+        android:textColor="@color/color_dark_pink"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/ExitImage"
+        app:layout_constraintStart_toEndOf="@+id/ExitImage"
+        app:layout_constraintTop_toTopOf="@+id/ExitImage" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/AddedPaymentMethodLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_corner_16x16x16x16_white_pink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LayoutTitleText">
+
+        <TextView
+            android:id="@+id/APML_TitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/added_payment_method"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/APML_RecView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/APML_TitleText"
+            app:layout_constraintTop_toBottomOf="@+id/APML_TitleText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ActionLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_corner_16x16x16x16_white_pink"
+        app:layout_constraintEnd_toEndOf="@+id/AddedPaymentMethodLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/AddedPaymentMethodLayout"
+        app:layout_constraintTop_toBottomOf="@+id/AddedPaymentMethodLayout">
+
+        <TextView
+            android:id="@+id/AL_TitleText"
+            android:layout_width="0dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/add_new_payment_method"
+            android:textColor="@color/text_dark_pink"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck,TextSizeCheck" />
+
+        <ImageView
+            android:id="@+id/AL_AddBankCardImage"
+            android:layout_width="@dimen/icon_size_2"
+            android:layout_height="@dimen/icon_size_2"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/AL_TitleText"
+            app:layout_constraintTop_toBottomOf="@+id/AL_TitleText"
+            app:srcCompat="@drawable/icon_payment"
+            app:tint="@color/color_brown"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/AL_AddBankCardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/add_bank_card"
+            android:textColor="@color/color_brown"
+            app:layout_constraintBottom_toBottomOf="@+id/AL_AddBankCardImage"
+            app:layout_constraintStart_toEndOf="@+id/AL_AddBankCardImage"
+            app:layout_constraintTop_toTopOf="@+id/AL_AddBankCardImage" />
+
+        <ImageView
+            android:id="@+id/AL_AddZaloPayImage"
+            android:layout_width="@dimen/icon_size_2"
+            android:layout_height="@dimen/icon_size_2"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/AL_AddBankCardImage"
+            app:layout_constraintTop_toBottomOf="@+id/AL_AddBankCardImage"
+            app:srcCompat="@drawable/icon_zalo"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/AL_AddZaloPayText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/add_zalo_pay"
+            android:textColor="@color/color_brown"
+            app:layout_constraintBottom_toBottomOf="@+id/AL_AddZaloPayImage"
+            app:layout_constraintStart_toEndOf="@+id/AL_AddZaloPayImage"
+            app:layout_constraintTop_toTopOf="@+id/AL_AddZaloPayImage" />
+
+        <ImageView
+            android:id="@+id/AL_AddMomoEWalletImage"
+            android:layout_width="@dimen/icon_size_2"
+            android:layout_height="@dimen/icon_size_2"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/AL_AddZaloPayImage"
+            app:layout_constraintTop_toBottomOf="@+id/AL_AddZaloPayImage"
+            app:srcCompat="@drawable/icon_momo"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/AL_AddMomoEWalletText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/add_momo_ewallet"
+            android:textColor="@color/color_brown"
+            app:layout_constraintBottom_toBottomOf="@+id/AL_AddMomoEWalletImage"
+            app:layout_constraintStart_toEndOf="@+id/AL_AddMomoEWalletImage"
+            app:layout_constraintTop_toTopOf="@+id/AL_AddMomoEWalletImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
