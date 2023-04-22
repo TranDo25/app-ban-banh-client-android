@@ -1,13 +1,24 @@
 package com.example.ai_banh_my_khong_dat_g.backendmodel;
 
-public class Products {
+import java.io.Serializable;
+
+public class Products implements Serializable {
     private Integer id;
     private String tenSp;
     private String moTa;
     private Double gia;
-    private String hinhAnh;
+
     private Integer soVote;
     private Integer categoryId;
+    private Double giamGia;
+
+    public Double getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(Double giamGia) {
+        this.giamGia = giamGia;
+    }
 
     public Integer getId() {
         return id;
@@ -41,13 +52,6 @@ public class Products {
         this.gia = gia;
     }
 
-    public String getHinhAnh() {
-        return hinhAnh;
-    }
-
-    public void setHinhAnh(String hinhAnh) {
-        this.hinhAnh = hinhAnh;
-    }
 
     public Integer getSoVote() {
         return soVote;
@@ -65,13 +69,16 @@ public class Products {
         this.categoryId = categoryId;
     }
 
-    public Products(Integer id, String tenSp, String moTa, Double gia, String hinhAnh, Integer soVote, Integer categoryId) {
+    public Products(Integer id, String tenSp, String moTa, Double gia, Integer soVote, Integer categoryId, Double giamGia) {
         this.id = id;
         this.tenSp = tenSp;
         this.moTa = moTa;
         this.gia = gia;
-        this.hinhAnh = hinhAnh;
         this.soVote = soVote;
         this.categoryId = categoryId;
+        this.giamGia = giamGia;
+    }
+
+    public Products() {
     }
 }

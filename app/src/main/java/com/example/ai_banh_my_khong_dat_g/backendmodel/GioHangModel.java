@@ -1,9 +1,10 @@
 package com.example.ai_banh_my_khong_dat_g.backendmodel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GioHangModel {
+public class GioHangModel implements Serializable {
     private List<Products> dsMatHangTrongGio = new ArrayList<>();
 
     public GioHangModel(List<Products> dsMatHangTrongGio) {

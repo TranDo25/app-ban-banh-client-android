@@ -15,12 +15,11 @@ public interface ApiService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://localhost:8080/")
+            .baseUrl("http://192.168.88.102:8080/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
-    @GET("/cart/getCartByIdUser")
+    @GET("cart/getCartByIdUser")
     Call<GioHangModel> getListCartByIdUser(@Query("iduser") String iduser);
-//    @GET("api/setfirebaseid")
-//    Call<List<CartItem>> setIdFirebaseUser(@Query("iduser")@Query("email") String email);
+
 }

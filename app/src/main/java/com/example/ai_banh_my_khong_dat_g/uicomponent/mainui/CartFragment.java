@@ -78,13 +78,12 @@ public class CartFragment extends Fragment implements IMainUIFragment {
                                     outRect.set(8, 8, 8, 8);
                                 }
                             });
-
                         }
                     }
 
                     @Override
                     public void onFailure(Call<GioHangModel> call, Throwable t) {
-                        Toast.makeText(getActivity(), "error call List<CartItem>", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
 
