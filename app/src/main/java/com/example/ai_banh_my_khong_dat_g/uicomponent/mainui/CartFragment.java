@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ai_banh_my_khong_dat_g.api.ApiService;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.GioHangModel;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.databinding.CartBinding;
 import com.example.ai_banh_my_khong_dat_g.model.CartItem;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestCartItem;
@@ -72,7 +73,8 @@ public class CartFragment extends Fragment implements IMainUIFragment {
 //                        System.out.println();
                         GioHangModel listCartItem = response.body();
                         if (listCartItem != null) {
-                            CartItemRecViewCardAdapter adapter = new CartItemRecViewCardAdapter(getContext(), TestCartItem.getList());
+                            List<ProductWithImageDTO> dsItem = listCartItem.getDsMatHangTrongGio();
+                            CartItemRecViewCardAdapter adapter = new CartItemRecViewCardAdapter(getContext(),dsItem);
                             binding.CartItemRecView.setAdapter(adapter);
                             LinearLayoutManager LLM = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                             binding.CartItemRecView.setLayoutManager(LLM);
