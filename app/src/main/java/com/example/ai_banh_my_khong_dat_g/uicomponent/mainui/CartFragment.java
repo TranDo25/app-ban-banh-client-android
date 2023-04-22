@@ -14,17 +14,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ai_banh_my_khong_dat_g.ThanhToanZalopayActivity;
 import com.example.ai_banh_my_khong_dat_g.api.ApiService;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.GioHangModel;
 import com.example.ai_banh_my_khong_dat_g.databinding.CartBinding;
-import com.example.ai_banh_my_khong_dat_g.model.CartItem;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestCartItem;
-import com.example.ai_banh_my_khong_dat_g.thanhtoan.ThanhToanActivity;
+import com.example.ai_banh_my_khong_dat_g.uicomponent.itemfilterrecview.thanhtoan.ThanhToanActivity;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.cartitemrecview.CartItemRecViewCardAdapter;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,13 +35,12 @@ public class CartFragment extends Fragment implements IMainUIFragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = CartBinding.inflate(inflater, container, false);
-
         setupItemRecyclerView();
         btnThanhToan = binding.PayButton;
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ThanhToanActivity.class);
+                Intent intent = new Intent(getContext(), ThanhToanZalopayActivity.class);
                 startActivity(intent);
             }
         });

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:contentDescription="@string/lbl_sotien"
-    tools:context=".MainActivity">
+    tools:context=".ThanhToanZalopayActivity">
 
 
     <TextView
@@ -89,7 +89,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="30dp"
-        android:background="#2196F3"
+        android:background="@color/colorZalopayButton"
         android:text="@string/btn_pay"
         android:textColor="#FFFFFF"
         android:textSize="26sp"

@@ -16,8 +16,8 @@
     <color name="text_brown">#574143</color>
     <color name="text_white_pink">#FFF2F5</color>
     <color name="text_dark_pink">#FF5874</color>
-    <color name="colorPrimary">#FF9800</color>
-    <color name="colorPrimaryDark">#FF9800</color>
-    <color name="colorAccent">#2196F3</color>
+<!--    <color name="colorPrimary">#FF9800</color>-->
+<!--    <color name="colorPrimaryDark">#FF9800</color>-->
+    <color name="colorZalopayButton">#2196F3</color>
 
 </resources>

@@ -9,7 +9,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.View;
@@ -19,7 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.ai_banh_my_khong_dat_g.zalo.Api.CreateOrder;
@@ -32,7 +30,7 @@ import vn.zalopay.sdk.ZaloPaySDK;
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.listeners.PayOrderListener;
 
-public class ThanhToanActivity extends AppCompatActivity {
+public class ThanhToanZalopayActivity extends AppCompatActivity {
     TextView lblZpTransToken, txtToken;
     Button btnCreateOrder, btnPay;
     EditText txtAmount;
@@ -62,7 +60,7 @@ public class ThanhToanActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_thanh_toan_with_zalopay);
 
         StrictMode.ThreadPolicy policy = new
                 StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -103,13 +101,13 @@ public class ThanhToanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String token = txtToken.getText().toString();
-                ZaloPaySDK.getInstance().payOrder(ThanhToanActivity.this, token, "demozpdk://app", new PayOrderListener() {
+                ZaloPaySDK.getInstance().payOrder(ThanhToanZalopayActivity.this, token, "demozpdk://app", new PayOrderListener() {
                     @Override
                     public void onPaymentSucceeded(final String transactionId, final String transToken, final String appTransID) {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                new AlertDialog.Builder(ThanhToanActivity.this)
+                                new AlertDialog.Builder(ThanhToanZalopayActivity.this)
                                         .setTitle("Payment Success")
                                         .setMessage(String.format("TransactionId: %s - TransToken: %s", transactionId, transToken))
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -126,7 +124,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
                     @Override
                     public void onPaymentCanceled(String zpTransToken, String appTransID) {
-                        new AlertDialog.Builder(ThanhToanActivity.this)
+                        new AlertDialog.Builder(ThanhToanZalopayActivity.this)
                                 .setTitle("User Cancel Payment")
                                 .setMessage(String.format("zpTransToken: %s \n", zpTransToken))
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -139,7 +137,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
                     @Override
                     public void onPaymentError(ZaloPayError zaloPayError, String zpTransToken, String appTransID) {
-                        new AlertDialog.Builder(ThanhToanActivity.this)
+                        new AlertDialog.Builder(ThanhToanZalopayActivity.this)
                                 .setTitle("Payment Fail")
                                 .setMessage(String.format("ZaloPayErrorCode: %s \nTransToken: %s", zaloPayError.toString(), zpTransToken))
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {

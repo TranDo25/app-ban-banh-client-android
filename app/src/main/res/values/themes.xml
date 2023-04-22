@@ -1,6 +1,6 @@
 <resources>
     <style name="Theme.Croz" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/text_black</item>
+        <item name="colorPrimary">@android:color/holo_purple</item>
         <item name="colorPrimaryVariant">#BA1E1E</item>
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorSecondary">#28B4D8</item>
