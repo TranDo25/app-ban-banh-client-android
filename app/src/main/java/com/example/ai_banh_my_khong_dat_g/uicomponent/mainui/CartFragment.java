@@ -69,6 +69,7 @@ public class CartFragment extends Fragment implements IMainUIFragment {
                     @Override
                     public void onResponse(Call<GioHangModel> call, Response<GioHangModel> response) {
                         Toast.makeText(getActivity(), "call List<CartItem> success", Toast.LENGTH_SHORT).show();
+//                        System.out.println();
                         GioHangModel listCartItem = response.body();
                         if (listCartItem != null) {
                             CartItemRecViewCardAdapter adapter = new CartItemRecViewCardAdapter(getContext(), TestCartItem.getList());
