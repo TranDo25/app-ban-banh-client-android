@@ -5,36 +5,75 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".thanhtoan.ThanhToanActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/lblThanhToan"
+    android:layout_marginTop="10dp"
+    android:padding="12dp"
+    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/orderTenSp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tên sản phẩm"
+        android:layout_weight="1"
+        android:textSize="14sp">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="số lượng"
+        android:textSize="14sp"
+        android:layout_weight="1"
+        android:id="@+id/orderSoLuong"
+        >
+
+    </TextView>
+    <TextView
+        android:id="@+id/orderDonGia"
+        android:textSize="14sp"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="đơn giá"
+        >
+
+    </TextView>
+</LinearLayout>
 
     <EditText
         android:id="@+id/txtSdt"
-        android:layout_width="wrap_content"
+        android:layout_width="224dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/btnmomo"
         android:layout_alignEnd="@+id/txtEmail"
         android:layout_alignBottom="@+id/btnmomo"
         android:layout_marginTop="60dp"
         android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="247dp"
+        android:layout_marginBottom="99dp"
         android:ems="10"
         android:inputType="text"
         android:text="0112345553"
         app:layout_constraintBottom_toBottomOf="@+id/txtEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lblSdt"
-         />
+        app:layout_constraintStart_toEndOf="@+id/lblSdt" />
 
     <Button
         android:id="@+id/btnmomo"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="632dp"
+        android:layout_below="@+id/lblEmail"
+        android:layout_alignParentEnd="true"
+
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="84dp"
         android:background="#b0006d"
-        android:text="Thanh toán và đặt hàng"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerInParent="true"
+        android:text="Thanh toán và đặt hàng" />
 
     <TextView
         android:id="@+id/lblThanhToan"
@@ -51,32 +90,20 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lblSoTien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/lblDiaChiGiaoHang"
-        android:layout_alignBottom="@+id/btnmomo"
-        android:layout_marginStart="90dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginBottom="525dp"
-        android:text="tổng cộng"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/lblSdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btnmomo"
-        android:layout_alignBottom="@+id/btnmomo"
-        android:layout_marginStart="-21dp"
-        android:layout_marginTop="31dp"
+        android:layout_below="@+id/lblDiaChiGiaoHang"
+        android:layout_alignStart="@+id/lblDiaChiGiaoHang"
+        android:layout_alignLeft="@+id/lblDiaChiGiaoHang"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginLeft="-41dp"
+        android:layout_marginTop="39dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginBottom="257dp"
         android:text="số điện thoại"
         app:layout_constraintEnd_toStartOf="@+id/txtSdt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblSoTien" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/lblEmail"
@@ -84,24 +111,24 @@
         android:layout_height="wrap_content"
 
         android:layout_below="@+id/lblDiaChiGiaoHang"
-        android:layout_alignStart="@+id/lblDiaChiGiaoHang"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="47dp"
+        android:layout_alignStart="@+id/lblSdt"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="107dp"
         android:text="email"
         app:layout_constraintBottom_toTopOf="@+id/lblDiaChiGiaoHang"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="206dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/btnmomo"
         android:layout_alignBottom="@+id/btnmomo"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="78dp"
-        android:layout_marginEnd="39dp"
-        android:layout_marginBottom="308dp"
+        android:layout_marginStart="73dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="168dp"
         android:ems="10"
         android:inputType="text"
         android:text="example@gmail.com"
@@ -109,14 +136,14 @@
         app:layout_constraintEnd_toEndOf="@+id/txtSdt" />
 
     <EditText
-        android:id="@+id/lblDiaChi"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtDiaChi"
+        android:layout_width="224dp"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/txtEmail"
         android:layout_alignEnd="@+id/btnmomo"
-        android:layout_alignBottom="@+id/btnmomo"
         android:layout_marginStart="6dp"
-        android:layout_marginEnd="-44dp"
-        android:layout_marginBottom="370dp"
+        android:layout_marginEnd="-53dp"
+        android:layout_marginBottom="7dp"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="@+id/lblDiaChiGiaoHang"
@@ -126,52 +153,23 @@
         android:id="@+id/lblDiaChiGiaoHang"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btnmomo"
-        android:layout_marginStart="-50dp"
-        android:layout_marginTop="277dp"
-        android:text="địa chỉ giao hàng"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_below="@+id/recycleViewBillItem"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="-400dp"
+        android:text="địa chỉ" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewBillItem"
+        android:layout_width="match_parent"
+        android:layout_height="193dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="75dp"
-        android:layout_marginTop="101dp"
-        android:text="bánh A" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="174dp"
-        android:layout_marginTop="99dp"
-        android:text="x1" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="229dp"
-        android:layout_marginTop="99dp"
-        android:text="10.000 đ" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="134dp"
-        android:layout_marginEnd="128dp"
-        android:text="10.000 đ" />
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="114dp"
+        android:layout_marginBottom="424dp" />
 
 </RelativeLayout>

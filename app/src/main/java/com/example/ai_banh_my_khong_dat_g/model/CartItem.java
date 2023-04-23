@@ -6,6 +6,9 @@ public class CartItem implements Serializable {
     protected int amount;
     protected Item item;
 
+
+
+
     public int getAmount() {
         return amount;
     }

@@ -31,7 +31,9 @@ public class HttpProvider {
 
             OkHttpClient client = new OkHttpClient.Builder()
                     .connectionSpecs(Collections.singletonList(spec))
-                    .callTimeout(5000, TimeUnit.MILLISECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS)
+//                    .callTimeout(5000, TimeUnit.MILLISECONDS)
                     .build();
 
             Request request = new Request.Builder()

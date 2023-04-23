@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.ai_banh_my_khong_dat_g.R;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.model.CartItem;
 
 
@@ -17,14 +18,22 @@ import java.util.List;
 
 public class CartItemRecViewCardAdapter extends RecyclerView.Adapter<CartItemRecViewCardHolder> {
     private final Context context;
-    private List<CartItem> modelList;
+    //    private List<CartItem> modelList;
+    private List<ProductWithImageDTO> modelList;
 
-    public CartItemRecViewCardAdapter(Context context, List<CartItem> itemList) {
+    //    public CartItemRecViewCardAdapter(Context context, List<CartItem> itemList) {
+//        this.context = context;
+//        setViewModelList(itemList);
+//    }
+    public CartItemRecViewCardAdapter(Context context, List<ProductWithImageDTO> itemList) {
         this.context = context;
         setViewModelList(itemList);
     }
 
-    public void setViewModelList(List<CartItem> modelList) {
+    //    public void setViewModelList(List<CartItem> modelList) {
+//        this.modelList = modelList;
+//    }
+    public void setViewModelList(List<ProductWithImageDTO> modelList) {
         this.modelList = modelList;
     }
 
@@ -38,7 +47,8 @@ public class CartItemRecViewCardAdapter extends RecyclerView.Adapter<CartItemRec
 
     @Override
     public void onBindViewHolder(@NonNull CartItemRecViewCardHolder holder, int position) {
-        CartItem model = modelList.get(position);
+//        CartItem model = modelList.get(position);
+        ProductWithImageDTO model = modelList.get(position);
         holder.setModel(model);
     }
 

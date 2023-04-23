@@ -4,17 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GioHangModel {
-    private List<Products> dsMatHangTrongGio = new ArrayList<>();
+    private List<ProductWithImageDTO> dsMatHangTrongGio = new ArrayList<>();
 
-    public GioHangModel(List<Products> dsMatHangTrongGio) {
+    public GioHangModel(List<ProductWithImageDTO> dsMatHangTrongGio) {
         this.dsMatHangTrongGio = dsMatHangTrongGio;
     }
 
-    public List<Products> getDsMatHangTrongGio() {
+    public List<ProductWithImageDTO> getDsMatHangTrongGio() {
         return dsMatHangTrongGio;
     }
 
-    public void setDsMatHangTrongGio(List<Products> dsMatHangTrongGio) {
+    public void setDsMatHangTrongGio(List<ProductWithImageDTO> dsMatHangTrongGio) {
         this.dsMatHangTrongGio = dsMatHangTrongGio;
+    }
+
+    public GioHangModel() {
     }
 }
