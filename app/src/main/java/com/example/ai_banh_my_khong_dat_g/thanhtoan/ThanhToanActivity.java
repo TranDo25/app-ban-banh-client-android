@@ -1,6 +1,9 @@
 package com.example.ai_banh_my_khong_dat_g.thanhtoan;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,21 +11,27 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ai_banh_my_khong_dat_g.R;
+import com.example.ai_banh_my_khong_dat_g.ThanhToanZalopayActivity;
 import com.example.ai_banh_my_khong_dat_g.Utils;
+import com.example.ai_banh_my_khong_dat_g.adapter.OrderAdapter;
+import com.example.ai_banh_my_khong_dat_g.model.ItemInBill;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //import vn.momo.momo_partner.AppMoMoLib;
 
 public class ThanhToanActivity extends AppCompatActivity {
-//    Button btnmomo;
+    //    Button btnmomo;
 //    //variable for momo
 //    private String amount = "10000";
 //    private String fee = "0";
@@ -32,12 +41,44 @@ public class ThanhToanActivity extends AppCompatActivity {
 //    private String merchantCode = "SCB01";
 //    private String merchantNameLabel = "Apple fake";
 //    private String description = "mua hàng online";
-
+    private RecyclerView recyclerView;
+    EditText diaChiGiaoHang, sdt, email;
+    private List<ItemInBill> dsItem = new ArrayList<>();
+    private Button btnThanhToan;
+    private double tongTien;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanh_toan);
+        recyclerView = findViewById(R.id.recycleViewBillItem);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        diaChiGiaoHang = findViewById(R.id.txtDiaChi);
+        sdt = findViewById(R.id.txtSdt);
+        email = findViewById(R.id.txtEmail);
+        recyclerView.addItemDecoration(itemDecoration);
+        dsItem = (List<ItemInBill>) getIntent().getSerializableExtra("listItemInBill");
+        for(ItemInBill i:dsItem){
+            double tongTienTungLoai = i.getDonGia()*i.getSoLuong();
+            tongTien+= tongTienTungLoai;
+        }
+        btnThanhToan = findViewById(R.id.btnmomo);
+        btnThanhToan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ThanhToanActivity.this, ThanhToanZalopayActivity.class);
+                intent.putExtra("tongTien", String.valueOf(tongTien));
+                intent.putExtra("diaChiGiaoHang", diaChiGiaoHang.getText().toString());
+                intent.putExtra("email", email.getText().toString());
+                intent.putExtra("sdt", sdt.getText().toString());
+                startActivity(intent);
+            }
+        });
+        OrderAdapter adapter = new OrderAdapter(dsItem);
+        recyclerView.setAdapter(adapter);
+
 //        initView();
 //        AppMoMoLib.getInstance().setEnvironment(AppMoMoLib.ENVIRONMENT.DEVELOPMENT); // AppMoMoLib.ENVIRONMENT.PRODUCTION
 //        initControl();

@@ -14,6 +14,7 @@ import com.example.ai_banh_my_khong_dat_g.Utils;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.model.CartItem;
 import com.example.ai_banh_my_khong_dat_g.model.Item;
+import com.example.ai_banh_my_khong_dat_g.model.ItemInBill;
 
 
 public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
@@ -78,5 +79,12 @@ public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
         realPrice.setText("Đơn giá : " +model.getGia());
 //        model.set(1);
         amount.setText("1");
+    }
+    public ItemInBill getInfoItem(){
+        ItemInBill tmp = new ItemInBill();
+        tmp.setDonGia(model.getGia());
+        tmp.setTenSp(model.getTenSp());
+        tmp.setSoLuong(Integer.parseInt(amount.getText().toString()));
+        return tmp;
     }
 }
