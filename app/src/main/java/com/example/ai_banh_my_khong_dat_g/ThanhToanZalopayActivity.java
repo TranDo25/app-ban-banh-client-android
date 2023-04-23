@@ -20,10 +20,15 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 
 
+import com.example.ai_banh_my_khong_dat_g.api.ApiService;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
 import com.example.ai_banh_my_khong_dat_g.zalo.Api.CreateOrder;
 
 import org.json.JSONObject;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import vn.zalopay.sdk.ZaloPayError;
 import vn.zalopay.sdk.ZaloPaySDK;
@@ -70,8 +75,9 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
         ZaloPaySDK.init(2553, Environment.SANDBOX);
         // bind components with ids
         BindView();
-//        String tmp = getIntent().getStringExtra("tongTien");
-        txtAmount.setText(String.valueOf(1085000));
+        String tmp = getIntent().getStringExtra("tongTien");
+        int tongTien = Integer.parseInt(tmp);
+        txtAmount.setText(String.valueOf(tongTien));
         // handle CreateOrder
         btnCreateOrder.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -79,7 +85,13 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CreateOrder orderApi = new CreateOrder();
+                List<Cart> danhSachCart = new ArrayList<>();
 
+                String sdt = getIntent().getStringExtra("sdt");
+                String diaChiGiaoHang = getIntent().getStringExtra("diaChiGiaoHang");
+//                ApiService.apiService.setThongTinGiaoHang().enqueue(
+//
+//                );
                 try {
                     JSONObject data = orderApi.createOrder(txtAmount.getText().toString());
                     Log.d("Amount", txtAmount.getText().toString());

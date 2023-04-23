@@ -44,6 +44,7 @@ public class CartFragment extends Fragment implements IMainUIFragment {
     private RecyclerView recyclerView;
     List<ItemInBill> itemInBills = new ArrayList<>();
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = CartBinding.inflate(inflater, container, false);
 
