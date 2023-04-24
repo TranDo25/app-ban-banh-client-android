@@ -18,6 +18,7 @@ import com.example.ai_banh_my_khong_dat_g.AnimateDuration;
 import com.example.ai_banh_my_khong_dat_g.databinding.ItemmenuBinding;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestItem;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestItemCategory;
+import com.example.ai_banh_my_khong_dat_g.testmodel.TestListProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.itemcardrecview.ItemCardRecViewAdapter;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.itemfilterrecview.ItemFilterRecViewAdapter;
 
@@ -62,7 +63,7 @@ public class ItemMenuFragment extends Fragment implements IMainUIFragment {
     }
 
     protected void setupItemRecyclerView() {
-        ItemCardRecViewAdapter adapter = new ItemCardRecViewAdapter(getContext(), TestItem.getList());
+        ItemCardRecViewAdapter adapter = new ItemCardRecViewAdapter(getContext(), TestListProductWithImageDTO.getList());
         binding.ItemRecView.setAdapter(adapter);
 
         int itemSpacing = 16;

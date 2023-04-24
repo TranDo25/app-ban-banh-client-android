@@ -6,7 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="148dp"
     android:background="@drawable/rounded_corner_16x16x16x16_white_pink"
-    tools:ignore="TextSizeCheck">
+    tools:ignore="TextSizeCheck"
+    android:padding="5dp"
+    android:layout_marginTop="5dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ItemImage"
@@ -24,15 +26,16 @@
 
     <TextView
         android:id="@+id/TitleText"
-        android:layout_width="212dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="105dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="11dp"
+        android:scrollHorizontally="false"
         android:text="@string/name"
         android:textColor="@color/text_dark_pink"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="@+id/cartItemViewHolder"
+        app:layout_constraintEnd_toStartOf="@+id/QuantityLayout"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/ItemImage"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />

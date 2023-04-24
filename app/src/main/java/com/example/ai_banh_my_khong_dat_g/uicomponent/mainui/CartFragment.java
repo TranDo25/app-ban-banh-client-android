@@ -11,18 +11,14 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.ai_banh_my_khong_dat_g.adapter.OrderAdapter;
 import com.example.ai_banh_my_khong_dat_g.api.ApiService;
-import com.example.ai_banh_my_khong_dat_g.backendmodel.GioHangModel;
-import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageWithNumberDTO;
 import com.example.ai_banh_my_khong_dat_g.databinding.CartBinding;
-import com.example.ai_banh_my_khong_dat_g.model.CartItem;
-import com.example.ai_banh_my_khong_dat_g.model.Item;
 import com.example.ai_banh_my_khong_dat_g.model.ItemInBill;
-import com.example.ai_banh_my_khong_dat_g.testmodel.TestCartItem;
 import com.example.ai_banh_my_khong_dat_g.thanhtoan.ThanhToanActivity;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.cartitemrecview.CartItemRecViewCardAdapter;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.cartitemrecview.CartItemRecViewCardHolder;
@@ -44,6 +40,7 @@ public class CartFragment extends Fragment implements IMainUIFragment {
     private RecyclerView recyclerView;
     List<ItemInBill> itemInBills = new ArrayList<>();
 
+
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = CartBinding.inflate(inflater, container, false);
 
@@ -64,7 +61,7 @@ public class CartFragment extends Fragment implements IMainUIFragment {
                 }
                 intent.putExtra("listItemInBill", (Serializable) itemInBills);
                 startActivity(intent);
-
+                intent.removeExtra("listItemInBill");
             }
         });
         return binding.getRoot();
@@ -79,39 +76,80 @@ public class CartFragment extends Fragment implements IMainUIFragment {
 
     @Override
     public void OnShowed() {
+
     }
 
     protected void setupItemRecyclerView() {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getContext());
         System.out.println("id của user là:" + account.getEmail());
-        ApiService.apiService.getListCartByIdUser(account.getEmail())
-                .enqueue(new Callback<GioHangModel>() {
+//        List<Cart> listCart = new ArrayList<>();
+//        ApiService.apiService.getListCartByIdUserNew(account.getEmail()).enqueue(new Callback<List<Cart>>() {
+//            @Override
+//            public void onResponse(Call<List<Cart>> call, Response<List<Cart>> response) {
+//                List<Cart> listCartTmp = response.body();
+//                listCart.addAll(listCartTmp);
+//                List<ProductWithImageDTO> listProductTmp = new ArrayList<>();
+//                for (Cart i : listCart) {
+//                    ApiService.apiService.getDetailProductById(i.getProductsId()).enqueue(new Callback<ProductWithImageDTO>() {
+//                        @Override
+//                        public void onResponse(Call<ProductWithImageDTO> call, Response<ProductWithImageDTO> response) {
+//                            ProductWithImageDTO tmpProduct2 = response.body();
+//                            listProductTmp.add(tmpProduct2);
+//                        }
+//
+//                        @Override
+//                        public void onFailure(Call<ProductWithImageDTO> call, Throwable t) {
+//                            Toast.makeText(getActivity(), "error call product by id", Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    });
+//                }
+//                System.out.println(listProductTmp);
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Cart>> call, Throwable t) {
+//                Toast.makeText(getActivity(), "error call List<Cart>", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+
+
+        ApiService.apiService.getCartByIdUser(account.getEmail())
+                .enqueue(new Callback<List<ProductWithImageWithNumberDTO>>() {
                     @Override
-                    public void onResponse(Call<GioHangModel> call, Response<GioHangModel> response) {
+                    public void onResponse(Call<List<ProductWithImageWithNumberDTO>> call, Response<List<ProductWithImageWithNumberDTO>> response) {
                         Toast.makeText(getActivity(), "call List<CartItem> success", Toast.LENGTH_SHORT).show();
 //                        System.out.println();
-                        GioHangModel listCartItem = response.body();
+                        List<ProductWithImageWithNumberDTO> listCartItem = response.body();
                         if (listCartItem != null) {
-                            List<ProductWithImageDTO> dsItem = listCartItem.getDsMatHangTrongGio();
-                            CartItemRecViewCardAdapter adapter = new CartItemRecViewCardAdapter(getContext(), dsItem);
+//                            List<ProductWithImageDTO> dsItem = listCartItem.getDsMatHangTrongGio();
+                            CartItemRecViewCardAdapter adapter = new CartItemRecViewCardAdapter(getContext(), listCartItem);
                             binding.CartItemRecView.setAdapter(adapter);
                             LinearLayoutManager LLM = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
                             binding.CartItemRecView.setLayoutManager(LLM);
-                            binding.CartItemRecView.addItemDecoration(new RecyclerView.ItemDecoration() {
-                                @Override
-                                public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-                                    outRect.set(8, 8, 8, 8);
-                                }
-                            });
-
+//                            binding.CartItemRecView.addItemDecoration(new RecyclerView.ItemDecoration() {
+//                                @Override
+//                                public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+//                                    outRect.set(8, 8, 8, 8);
+//                                }
+//                            });
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<GioHangModel> call, Throwable t) {
+                    public void onFailure(Call<List<ProductWithImageWithNumberDTO>> call, Throwable t) {
                         Toast.makeText(getActivity(), "error call List<CartItem>", Toast.LENGTH_SHORT).show();
                     }
                 });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Load lại Fragment
+        itemInBills.clear();
+        setupItemRecyclerView();
     }
 }
