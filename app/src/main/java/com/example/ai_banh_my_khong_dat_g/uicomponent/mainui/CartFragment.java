@@ -46,6 +46,7 @@ public class CartFragment extends Fragment implements IMainUIFragment {
 
         setupItemRecyclerView();
         btnThanhToan = binding.PayButton;
+        btnThanhToan.setVisibility(View.INVISIBLE);
         recyclerView = binding.CartItemRecView;
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +123,9 @@ public class CartFragment extends Fragment implements IMainUIFragment {
                         Toast.makeText(getActivity(), "call List<CartItem> success", Toast.LENGTH_SHORT).show();
 //                        System.out.println();
                         List<ProductWithImageWithNumberDTO> listCartItem = response.body();
+
                         if (listCartItem != null) {
+                            btnThanhToan.setVisibility(View.VISIBLE);
 //                            List<ProductWithImageDTO> dsItem = listCartItem.getDsMatHangTrongGio();
                             CartItemRecViewCardAdapter adapter = new CartItemRecViewCardAdapter(getContext(), listCartItem);
                             binding.CartItemRecView.setAdapter(adapter);

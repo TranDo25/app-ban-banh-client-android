@@ -1,7 +1,9 @@
 package com.example.ai_banh_my_khong_dat_g.backendmodel;
 
 
-public class Orders {
+import java.io.Serializable;
+
+public class Orders implements Serializable {
 
 
     private Integer id;

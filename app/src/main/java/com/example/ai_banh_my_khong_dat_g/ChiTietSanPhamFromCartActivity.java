@@ -25,6 +25,7 @@ public class ChiTietSanPhamFromCartActivity extends AppCompatActivity {
     private TextView moTaSanPham, tenSp, giaGoc, giamGia, soLuong;
     private ImageView image;
     private Button btnCancel, btnOk;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,11 +69,11 @@ public class ChiTietSanPhamFromCartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ApiService.apiService.changeNumberOfItem(product.getCartId(),Integer.parseInt(soLuong.getText().toString())).enqueue(new Callback<MessageDTO>() {
+                ApiService.apiService.changeNumberOfItem(product.getCartId(), Integer.parseInt(soLuong.getText().toString())).enqueue(new Callback<MessageDTO>() {
                     @Override
                     public void onResponse(Call<MessageDTO> call, Response<MessageDTO> response) {
                         MessageDTO ketqua = response.body();
-                        if(ketqua != null){
+                        if (ketqua != null) {
                             Toast.makeText(ChiTietSanPhamFromCartActivity.this, ketqua.getMessage(), Toast.LENGTH_SHORT).show();
                             onBackPressed();
 
@@ -91,10 +92,25 @@ public class ChiTietSanPhamFromCartActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                int id = product.getCartId();
+                ApiService.apiService.deleteCartItemById(product.getCartId()).enqueue(new Callback<MessageDTO>() {
+                    @Override
+                    public void onResponse(Call<MessageDTO> call, Response<MessageDTO> response) {
+                        String message = response.body().getMessage();
+                        Toast.makeText(ChiTietSanPhamFromCartActivity.this, message, Toast.LENGTH_SHORT).show();
+                        onBackPressed();
+                    }
+
+                    @Override
+                    public void onFailure(Call<MessageDTO> call, Throwable t) {
+                        Toast.makeText(ChiTietSanPhamFromCartActivity.this, "server cannot call delete method", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         finish();

@@ -61,6 +61,7 @@ public class ThanhToanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanh_toan);
         recyclerView = findViewById(R.id.recycleViewBillItem);
@@ -137,12 +138,26 @@ public class ThanhToanActivity extends AppCompatActivity {
 
                     }
                 });
-                Intent intent = new Intent(ThanhToanActivity.this, ThanhToanZalopayActivity.class);
-                intent.putExtra("tongTien", String.valueOf(tongTien));
-                intent.putExtra("diaChiGiaoHang", diaChiGiaoHang.getText().toString());
+
+                ApiService.apiService.getTheNewestOrderId().enqueue(new Callback<MessageDTO>() {
+                    @Override
+                    public void onResponse(Call<MessageDTO> call, Response<MessageDTO> response) {
+                        int idNewestOrder = Integer.parseInt(response.body().getMessage());
+                        Intent intent = new Intent(ThanhToanActivity.this, ThanhToanZalopayActivity.class);
+                        intent.putExtra("tongTien", String.valueOf(tongTien));
+                        intent.putExtra("diaChiGiaoHang", diaChiGiaoHang.getText().toString());
 //                intent.putExtra("email", email.getText().toString());
-                intent.putExtra("sdt", sdt.getText().toString());
-                startActivity(intent);
+                        intent.putExtra("sdt", sdt.getText().toString());
+                        intent.putExtra("idNewestOrder", idNewestOrder);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<MessageDTO> call, Throwable t) {
+
+                    }
+                });
+
             }
         });
         Log.d("ds item length", String.valueOf(dsItem.size()));

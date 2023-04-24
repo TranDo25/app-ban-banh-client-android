@@ -22,6 +22,7 @@ import androidx.annotation.RequiresApi;
 
 import com.example.ai_banh_my_khong_dat_g.api.ApiService;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.MessageDTO;
 import com.example.ai_banh_my_khong_dat_g.zalo.Api.CreateOrder;
 
 import org.json.JSONObject;
@@ -30,6 +31,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vn.zalopay.sdk.ZaloPayError;
 import vn.zalopay.sdk.ZaloPaySDK;
 import vn.zalopay.sdk.Environment;
@@ -86,10 +90,10 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CreateOrder orderApi = new CreateOrder();
-                List<Cart> danhSachCart = new ArrayList<>();
-
-                String sdt = getIntent().getStringExtra("sdt");
-                String diaChiGiaoHang = getIntent().getStringExtra("diaChiGiaoHang");
+//                List<Cart> danhSachCart = new ArrayList<>();
+//
+//                String sdt = getIntent().getStringExtra("sdt");
+//                String diaChiGiaoHang = getIntent().getStringExtra("diaChiGiaoHang");
 //                ApiService.apiService.setThongTinGiaoHang().enqueue(
 //
 //                );
@@ -102,6 +106,21 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
 
                     if (code.equals("1")) {
                         lblZpTransToken.setText("zptranstoken");
+                        String tokenZalopay = data.getString("zp_trans_token");
+                        int idNewestOrder = getIntent().getIntExtra("idNewestOrder",0);
+                        ApiService.apiService.setToken(idNewestOrder, tokenZalopay).enqueue(new Callback<MessageDTO>() {
+                            @Override
+                            public void onResponse(Call<MessageDTO> call, Response<MessageDTO> response) {
+                                String responseMessage = response.body().getMessage();
+                                Toast.makeText(getApplicationContext(), responseMessage, Toast.LENGTH_LONG).show();
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<MessageDTO> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), "error save zalopay token", Toast.LENGTH_LONG).show();
+                            }
+                        });
                         txtToken.setText(data.getString("zp_trans_token"));
                         IsDone();
                     }

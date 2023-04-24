@@ -3,6 +3,7 @@ package com.example.ai_banh_my_khong_dat_g.api;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ChiTietOrderDTO;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.MessageDTO;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.Orders;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductAddToCartDTO;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageWithNumberDTO;
@@ -35,7 +36,8 @@ public interface ApiService {
             .create(ApiService.class);
     @GET("/cart/getCartByIdUser")
     Call<List<ProductWithImageWithNumberDTO>> getCartByIdUser(@Query("iduser") String iduser);
-
+    @GET("/order/getTheNewestOrderId")
+    Call<MessageDTO> getTheNewestOrderId();
     //thay doi so luong san pham
     @GET("/cart/changeNumberOfItem")
     Call<MessageDTO> changeNumberOfItem(@Query("cartId") int cartId, @Query ("soluong") int soluong );
@@ -79,8 +81,8 @@ public interface ApiService {
     Call<String> likeProduct(@Query("product_id") Integer product_id, @Query("users_id") String user_id);
 
     // set zalopay token cho don hang
-    @PUT("/api/order/setToken")
-    Call<String> setToken(@Query("idDonHang") int idOrder, @Query("token") String token );
+    @GET("/api/order/setToken")
+    Call<MessageDTO> setToken(@Query("idDonHang") int idOrder, @Query("token") String token );
 
     //thay doi trang thai don hang
     @PUT("/api/order/changeOrderStatus")
@@ -101,4 +103,8 @@ public interface ApiService {
     Call<MessageDTO> addProductToCart(@Body ProductAddToCartDTO productAddToCartDTO);
     @GET("/cart/getListCartByIdUserNew")
     Call<List<Cart>> getListCartByIdUserNew(@Query("idUser") String idUser);
+    @GET("/order/getAllOrderByIdUser")
+    Call<List<Orders>> getAllOrderByIdUser(@Query("idUser") String idUser);
+    @GET("/cart/deleteCartItem")
+    Call<MessageDTO> deleteCartItemById(@Query("idCart") int idCart);
 }
