@@ -2,9 +2,12 @@ package com.example.ai_banh_my_khong_dat_g.api;
 
 import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ChiTietOrderDTO;
-import com.example.ai_banh_my_khong_dat_g.backendmodel.GioHangModel;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.MessageDTO;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductAddToCartDTO;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageWithNumberDTO;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.Users;
+import com.example.ai_banh_my_khong_dat_g.config.ClientConfig;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -26,16 +29,16 @@ public interface ApiService {
             .setDateFormat("yyyy-MM-dd HH:mm:ss")
             .create();
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.88.102:8080/")
+            .baseUrl(ClientConfig.SERVER_NAME)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
     @GET("/cart/getCartByIdUser")
-    Call<GioHangModel> getListCartByIdUser(@Query("iduser") String iduser);
+    Call<List<ProductWithImageWithNumberDTO>> getCartByIdUser(@Query("iduser") String iduser);
 
     //thay doi so luong san pham
     @GET("/cart/changeNumberOfItem")
-    Call<String> changeNumberOfItem(@Query("cartId") int cartId, @Query ("soluong") int soluong );
+    Call<MessageDTO> changeNumberOfItem(@Query("cartId") int cartId, @Query ("soluong") int soluong );
 
     //xoa cart
     @DELETE("/cart")
@@ -67,8 +70,8 @@ public interface ApiService {
 
     //set thong tin giao hang
     @PUT("/api/order/setThongTinGiaoHang")
-    Call<String> setThongTinGiaoHang(@Query("idDonHang") int idOrder,@Query("sdt") String sdt
-            , @Query("diaChiGiaoHang") String diaChiGiaoHang);
+    Call<MessageDTO> setThongTinGiaoHang(@Query("idDonHang") int idOrder, @Query("sdt") String sdt
+            ,@Query("diaChiGiaoHang") String diaChiGiaoHang);
 
 
     //them san pham yeu thich
@@ -88,7 +91,14 @@ public interface ApiService {
     Call<ChiTietOrderDTO> getChiTietOrder(@Query("idDonHang") int idOrder );
 
     // get gio hang cua users
-    @GET("/cart/getCartByIdUser")
-    Call<GioHangModel> getCartByIdUser(@Query("iduser") String iduser);
-
+//    @GET("/cart/getCartByIdUser")
+//    Call<GioHangModel> getCartByIdUser(@Query("iduser") String iduser);
+    //lấy ra 10 sản phẩm có lượt vote cao nhất
+    @GET("/api/product/getTenProductWithHighestVote")
+    Call<List<ProductWithImageDTO>> getTenProductWithHighestVote();
+    //api thêm sản phẩm vào giỏ hàng
+    @POST("/cart/addProductToCart")
+    Call<MessageDTO> addProductToCart(@Body ProductAddToCartDTO productAddToCartDTO);
+    @GET("/cart/getListCartByIdUserNew")
+    Call<List<Cart>> getListCartByIdUserNew(@Query("idUser") String idUser);
 }

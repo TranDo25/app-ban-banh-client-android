@@ -39,7 +39,7 @@
     <string name="price">Giá thành</string>
     <string name="description">Mô tả</string>
     <string name="not_found_any_item">Không tìm thấy sản phẩm</string>
-    <string name="long_description">Mô tả con cặc, đụ má bánh biếc cái đầu lồn. </string>
+    <string name="long_description">Mô tả sản phẩm ở đây</string>
     <string name="add_to_cart">Thêm vào giỏ hàng</string>
     <string name="delivery_address">Địa chỉ nhận hàng</string>
     <string name="coupon_code">Mã giảm giá</string>

@@ -12,13 +12,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ai_banh_my_khong_dat_g.R;
 import com.example.ai_banh_my_khong_dat_g.ThanhToanZalopayActivity;
 import com.example.ai_banh_my_khong_dat_g.Utils;
 import com.example.ai_banh_my_khong_dat_g.adapter.OrderAdapter;
+import com.example.ai_banh_my_khong_dat_g.api.ApiService;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.MessageDTO;
 import com.example.ai_banh_my_khong_dat_g.model.ItemInBill;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,6 +33,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 //import vn.momo.momo_partner.AppMoMoLib;
 
@@ -42,10 +52,12 @@ public class ThanhToanActivity extends AppCompatActivity {
 //    private String merchantNameLabel = "Apple fake";
 //    private String description = "mua hàng online";
     private RecyclerView recyclerView;
+    private TextView lblTongTien;
     EditText diaChiGiaoHang, sdt, email;
     private List<ItemInBill> dsItem = new ArrayList<>();
     private Button btnThanhToan;
     private double tongTien;
+    private OrderAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,148 +69,100 @@ public class ThanhToanActivity extends AppCompatActivity {
         DividerItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         diaChiGiaoHang = findViewById(R.id.txtDiaChi);
         sdt = findViewById(R.id.txtSdt);
-        email = findViewById(R.id.txtEmail);
+//        email = findViewById(R.id.txtEmail);
+        lblTongTien = findViewById(R.id.lblTongTien);
         recyclerView.addItemDecoration(itemDecoration);
+        dsItem = new ArrayList<>();
         dsItem = (List<ItemInBill>) getIntent().getSerializableExtra("listItemInBill");
-        for(ItemInBill i:dsItem){
-            double tongTienTungLoai = i.getDonGia()*i.getSoLuong();
-            tongTien+= tongTienTungLoai;
+        for (ItemInBill i : dsItem) {
+            double tongTienTungLoai = i.getDonGia() * i.getSoLuong();
+            tongTien += tongTienTungLoai;
         }
+        lblTongTien.setText(" " + String.valueOf(tongTien) + " đ");
         btnThanhToan = findViewById(R.id.btnmomo);
+        adapter = new OrderAdapter(dsItem);
+        recyclerView.setAdapter(adapter);
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
+                ApiService.apiService.getListCartByIdUserNew(account.getEmail()).enqueue(new Callback<List<Cart>>() {
+                    @Override
+                    public void onResponse(Call<List<Cart>> call, Response<List<Cart>> response) {
+                        List<Cart> userCart = response.body();
+                        if (userCart.size() > 0) {
+                            ApiService.apiService.createOrder(userCart).enqueue(
+                                    new Callback<String>() {
+                                        @Override
+                                        public void onResponse(Call<String> call, Response<String> response) {
+                                            String messageReturn = response.body();
+                                            if (messageReturn.equals("error")) {
+                                                Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
+
+                                            } else {
+                                                ApiService.apiService.setThongTinGiaoHang(
+                                                        Integer.parseInt(messageReturn),
+                                                        sdt.getText().toString(),
+                                                        diaChiGiaoHang.getText().toString()).enqueue(new Callback<MessageDTO>() {
+                                                    @Override
+                                                    public void onResponse(Call<MessageDTO> call, Response<MessageDTO> response) {
+                                                        String messageFinal = response.body().getMessage();
+                                                        Toast.makeText(getApplicationContext(), messageFinal, Toast.LENGTH_SHORT).show();
+
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<MessageDTO> call, Throwable t) {
+                                                        Toast.makeText(getApplicationContext(), "error when set order info", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            }
+
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<String> call, Throwable t) {
+                                            Toast.makeText(getApplicationContext(), "error in create order", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    }
+                            );
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Cart>> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(), "error in create order", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
                 Intent intent = new Intent(ThanhToanActivity.this, ThanhToanZalopayActivity.class);
                 intent.putExtra("tongTien", String.valueOf(tongTien));
                 intent.putExtra("diaChiGiaoHang", diaChiGiaoHang.getText().toString());
-                intent.putExtra("email", email.getText().toString());
+//                intent.putExtra("email", email.getText().toString());
                 intent.putExtra("sdt", sdt.getText().toString());
                 startActivity(intent);
             }
         });
-        OrderAdapter adapter = new OrderAdapter(dsItem);
-        recyclerView.setAdapter(adapter);
+        Log.d("ds item length", String.valueOf(dsItem.size()));
 
-//        initView();
-//        AppMoMoLib.getInstance().setEnvironment(AppMoMoLib.ENVIRONMENT.DEVELOPMENT); // AppMoMoLib.ENVIRONMENT.PRODUCTION
-//        initControl();
-    }
-
-    private void initControl() {
-//        btnmomo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                String str_diachi = editdiachi.getText().toString().trim();
-//                requestPayment("DH001");
-//
-//                //cần có hàm update token momo, gửi token và id đơn hàng lên
-//                //laays ra id đơn hàng gửi qua intent
-//                //cần có message model nếu muốn tạo message notification
-//                //trong android cũng có trò subscribe
-//                //nhớ dùng hamf finish
-//                //update token xong thì chuyển màn hình
-//            }
-//        });
-    }
-
-    //Get token through MoMo app
-    private void requestPayment(String iddonhang) {
-//        AppMoMoLib.getInstance().setAction(AppMoMoLib.ACTION.PAYMENT);
-//        AppMoMoLib.getInstance().setActionType(AppMoMoLib.ACTION_TYPE.GET_TOKEN);
-//        //lấy giá trị tiền thông qua ô text
-////        if (edAmount.getText().toString() != null && edAmount.getText().toString().trim().length() != 0)
-////            amount = edAmount.getText().toString().trim();
-////fix cứng bằng 10.000 đ
-////        amount = "10000";
-//        Map<String, Object> eventValue = new HashMap<>();
-//        //client Required
-//        eventValue.put("merchantname", merchantName); //Tên đối tác. được đăng ký tại https://business.momo.vn. VD: Google, Apple, Tiki , CGV Cinemas
-//        eventValue.put("merchantcode", merchantCode); //Mã đối tác, được cung cấp bởi MoMo tại https://business.momo.vn
-//
-////        eventValue.put("amount", total_amount); //Kiểu integer
-//        eventValue.put("amount", amount); //Kiểu integer
-//        eventValue.put("orderId", iddonhang); //uniqueue id cho Bill order, giá trị duy nhất cho mỗi đơn hàng
-//        eventValue.put("orderLabel", "Mã đơn hàng: 19002222"); //gán nhãn
-//
-//        //client Optional - bill info
-//        eventValue.put("merchantnamelabel", "Dịch vụ");//gán nhãn
-////        eventValue.put("fee", total_fee); //Kiểu integer
-//        eventValue.put("fee", "0"); //Kiểu integer, cho phí bằng 0
-//        eventValue.put("description", description); //mô tả đơn hàng - short description
-//
-//        //client extra data
-//        eventValue.put("requestId", merchantCode + "merchant_billId_" + System.currentTimeMillis());
-//        eventValue.put("partnerCode", merchantCode);
-//        //Example extra data
-//        JSONObject objExtraData = new JSONObject();
-//        //chỗ này cần truyền thoong tin đơn hàng vào
-//        try {
-//            objExtraData.put("site_code", "008");
-//            objExtraData.put("site_name", "CGV Cresent Mall");
-//            objExtraData.put("screen_code", 0);
-//            objExtraData.put("screen_name", "Special");
-//            objExtraData.put("movie_name", "Kẻ Trộm Mặt Trăng 3");
-//            objExtraData.put("movie_format", "2D");
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        eventValue.put("extraData", objExtraData.toString());
-//
-//        eventValue.put("extra", "");
-//        AppMoMoLib.getInstance().requestMoMoCallBack(this, eventValue);
-//
 
     }
 
-    //Get token callback from MoMo app an submit to server side
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == AppMoMoLib.getInstance().REQUEST_CODE_MOMO && resultCode == -1) {
-//            if (data != null) {
-//                if (data.getIntExtra("status", -1) == 0) {
-//                    //TOKEN IS AVAILABLE
-//                    //hiện thông báo thành công, log ra thông báo
-//                    Log.d("thanhcong",data.getStringExtra("message"));
-////                    tvMessage.setText("message: " + "Get token " + data.getStringExtra("message"));
-//                    String token = data.getStringExtra("data"); //Token response
-//                    //để hàm update token csdl vào đây, tham khảo cách viết API trong java, gọi là class DAO
-//                    String phoneNumber = data.getStringExtra("phonenumber");
-//                    String env = data.getStringExtra("env");
-//                    if (env == null) {
-//                        env = "app";
-//                    }
-//
-//                    if (token != null && !token.equals("")) {
-//                        // TODO: send phoneNumber & token to your server side to process payment with MoMo server
-//                        // IF Momo topup success, continue to process your order
-//                    } else {
-//                        Log.d("message",data.getStringExtra("không có thông tin trả về"));
-////                        tvMessage.setText("message: " + this.getString(R.string.not_receive_info));
-//                    }
-//                } else if (data.getIntExtra("status", -1) == 1) {
-//                    //TOKEN FAIL
-//                    String message = data.getStringExtra("message") != null ? data.getStringExtra("message") : "Thất bại";
-//                    Log.d("thanhcong",data.getStringExtra("không thành công"));
-//                } else if (data.getIntExtra("status", -1) == 2) {
-//                    //TOKEN FAIL
-////                    tvMessage.setText("message: " + this.getString(R.string.not_receive_info));
-//                    Log.d("thanhcong",data.getStringExtra("không thành công"));
-//                } else {
-//                    //TOKEN FAIL
-////                    tvMessage.setText("message: " + this.getString(R.string.not_receive_info));
-//                    Log.d("thanhcong",data.getStringExtra("không thành công"));
-//                }
-//            } else {
-//                Log.d("thanhcong",data.getStringExtra("không thành công"));
-////                tvMessage.setText("message: " + this.getString(R.string.not_receive_info));
-//            }
-//        } else {
-//            Log.d("thanhcong",data.getStringExtra("không thành công"));
-////            tvMessage.setText("message: " + this.getString(R.string.not_receive_info_err));
-//        }
-//    }
+    // Ghi đè phương thức onBackPressed() để xử lý sự kiện khi người dùng nhấn nút back
+    @Override
+    public void onBackPressed() {
+        // Xoá tất cả các phần tử trong RecyclerView
+        dsItem.clear();
+        Log.d("ds item length", String.valueOf(dsItem.size()));
+        adapter.notifyDataSetChanged();
+        finish();
+        // Gọi phương thức onBackPressed() của lớp cha để hoàn thành việc thoát Activity
+        super.onBackPressed();
 
-    private void initView() {
-//        btnmomo = (Button) findViewById(R.id.btnmomo);
     }
+
 }
+
+

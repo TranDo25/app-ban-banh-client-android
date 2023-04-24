@@ -5,15 +5,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.ai_banh_my_khong_dat_g.GlobalVariable;
 import com.example.ai_banh_my_khong_dat_g.R;
-import com.example.ai_banh_my_khong_dat_g.Utils;
-import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
-import com.example.ai_banh_my_khong_dat_g.model.CartItem;
-import com.example.ai_banh_my_khong_dat_g.model.Item;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageWithNumberDTO;
 import com.example.ai_banh_my_khong_dat_g.model.ItemInBill;
 
 
@@ -23,13 +20,15 @@ public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
     private final TextView realPrice;
     private final TextView amount;
     //    private CartItem model;
-    private ProductWithImageDTO model;
+    private ProductWithImageWithNumberDTO model;
     private View itemView;
+    public ConstraintLayout layoutItem;
 
     public CartItemRecViewCardHolder(@NonNull View itemView) {
         super(itemView);
         this.itemView = itemView;
         image = itemView.findViewById(R.id.ItemImage);
+        layoutItem = itemView.findViewById(R.id.cartItemViewHolder);
         name = itemView.findViewById(R.id.TitleText);
         realPrice = itemView.findViewById(R.id.ItemListText);
         amount = itemView.findViewById(R.id.QL_NumberText);
@@ -38,7 +37,7 @@ public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
         decreaseImage.setOnClickListener(view -> {
 
             int soLuong = Integer.parseInt(amount.getText().toString());
-            if(soLuong != 0){
+            if (soLuong != 0) {
                 soLuong = soLuong - 1;
                 amount.setText(String.valueOf(soLuong));
             }
@@ -47,9 +46,8 @@ public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
         ImageView increaseImage = itemView.findViewById(R.id.QL_IncreaseImage);
         increaseImage.setOnClickListener(view -> {
             int soLuong = Integer.parseInt(amount.getText().toString());
-                soLuong = soLuong +1;
-                amount.setText(String.valueOf(soLuong));
-
+            soLuong = soLuong + 1;
+            amount.setText(String.valueOf(soLuong));
 
 
         });
@@ -62,7 +60,7 @@ public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
 //        this.model = model;
 //        validateLayout();
 //    }
-    public void setModel(@NonNull ProductWithImageDTO model) {
+    public void setModel(@NonNull ProductWithImageWithNumberDTO model) {
         if (this.model == model)
             return;
 
@@ -74,16 +72,18 @@ public class CartItemRecViewCardHolder extends RecyclerView.ViewHolder {
 //        ProductWithImageDTO item = model.getItem();
 //        image.setImageResource(item.getImageRID());
 //        Glide.with(itemView).load("http://192.168.88.102:8080/api/admin/product/image/banh_sn_danh_dau_thang_do.png").into(image);
-        Glide.with(itemView).load(model.getImageName()).into(image);
-        name.setText("Tên sản phẩm : "+model.getTenSp());
-        realPrice.setText("Đơn giá : " +model.getGia());
-//        model.set(1);
-        amount.setText("1");
+        Glide.with(itemView).load(model.getProductWithImageDTO().getImageName()).into(image);
+        name.setText(model.getProductWithImageDTO().getTenSp());
+        realPrice.setText(model.getProductWithImageDTO().getGia() + "đ");
+//        model.setTe(1);
+        amount.setText(String.valueOf(model.getSoLuongMuonMua()));
+
     }
-    public ItemInBill getInfoItem(){
+
+    public ItemInBill getInfoItem() {
         ItemInBill tmp = new ItemInBill();
-        tmp.setDonGia(model.getGia());
-        tmp.setTenSp(model.getTenSp());
+        tmp.setDonGia(model.getProductWithImageDTO().getGia());
+        tmp.setTenSp(model.getProductWithImageDTO().getTenSp());
         tmp.setSoLuong(Integer.parseInt(amount.getText().toString()));
         return tmp;
     }

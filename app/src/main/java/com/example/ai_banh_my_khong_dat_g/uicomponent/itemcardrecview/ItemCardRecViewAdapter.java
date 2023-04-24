@@ -10,20 +10,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.ai_banh_my_khong_dat_g.R;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.model.Item;
 
 import java.util.List;
 
 public class ItemCardRecViewAdapter extends RecyclerView.Adapter<ItemCardRecViewHolder> {
     private final Context context;
-    private List<Item> modelList;
+    //    private List<Item> modelList;
+    private List<ProductWithImageDTO> modelList;
 
-    public ItemCardRecViewAdapter(Context context, List<Item> itemList) {
+    //    public ItemCardRecViewAdapter(Context context, List<Item> itemList) {
+//        this.context = context;
+//        setViewModelList(itemList);
+//    }
+    public ItemCardRecViewAdapter(Context context, List<ProductWithImageDTO> itemList) {
         this.context = context;
         setViewModelList(itemList);
     }
 
-    public void setViewModelList(List<Item> modelList) {
+//    public void setViewModelList(List<Item> modelList) {
+//        this.modelList = modelList;
+//    }
+    public void setViewModelList(List<ProductWithImageDTO> modelList) {
         this.modelList = modelList;
     }
 
@@ -37,7 +46,8 @@ public class ItemCardRecViewAdapter extends RecyclerView.Adapter<ItemCardRecView
 
     @Override
     public void onBindViewHolder(@NonNull ItemCardRecViewHolder holder, int position) {
-        Item model = modelList.get(position);
+//        Item model = modelList.get(position);
+        ProductWithImageDTO model = modelList.get(position);
         holder.setModel(model);
     }
 

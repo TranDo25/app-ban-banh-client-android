@@ -76,8 +76,9 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
         // bind components with ids
         BindView();
         String tmp = getIntent().getStringExtra("tongTien");
-        int tongTien = Integer.parseInt(tmp);
-        txtAmount.setText(String.valueOf(tongTien));
+        double tongTien = Double.parseDouble(tmp);
+        int tongTienInt = (int) tongTien;
+        txtAmount.setText(String.valueOf(tongTienInt));
         // handle CreateOrder
         btnCreateOrder.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)

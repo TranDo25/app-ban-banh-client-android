@@ -1,175 +1,273 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".thanhtoan.ThanhToanActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/lblThanhToan"
-    android:layout_marginTop="10dp"
-    android:padding="12dp"
-    android:orientation="horizontal">
-    <TextView
-        android:id="@+id/orderTenSp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="tên sản phẩm"
-        android:layout_weight="1"
-        android:textSize="14sp">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    </TextView>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="số lượng"
-        android:textSize="14sp"
-        android:layout_weight="1"
-        android:id="@+id/orderSoLuong"
-        >
-
-    </TextView>
-    <TextView
-        android:id="@+id/orderDonGia"
-        android:textSize="14sp"
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="đơn giá"
-        >
-
-    </TextView>
-</LinearLayout>
-
-    <EditText
-        android:id="@+id/txtSdt"
-        android:layout_width="224dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/btnmomo"
-        android:layout_alignEnd="@+id/txtEmail"
-        android:layout_alignBottom="@+id/btnmomo"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="-1dp"
-        android:layout_marginBottom="99dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="0112345553"
-        app:layout_constraintBottom_toBottomOf="@+id/txtEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/lblSdt" />
-
-    <Button
-        android:id="@+id/btnmomo"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblEmail"
-        android:layout_alignParentEnd="true"
-
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="84dp"
-        android:background="#b0006d"
-        android:layout_centerInParent="true"
-        android:text="Thanh toán và đặt hàng" />
-
-    <TextView
-        android:id="@+id/lblThanhToan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_centerHorizontal="true"
-
-        android:layout_marginTop="29dp"
-        android:text="xác nhận thanh toán"
-        android:textSize="24sp"
-        android:textStyle="bold"
-
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lblSdt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lblDiaChiGiaoHang"
-        android:layout_alignStart="@+id/lblDiaChiGiaoHang"
-        android:layout_alignLeft="@+id/lblDiaChiGiaoHang"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="9dp"
-        android:layout_marginLeft="-41dp"
-        android:layout_marginTop="39dp"
-        android:layout_marginEnd="35dp"
-        android:text="số điện thoại"
-        app:layout_constraintEnd_toStartOf="@+id/txtSdt"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/lblEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_below="@+id/lblDiaChiGiaoHang"
-        android:layout_alignStart="@+id/lblSdt"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="107dp"
-        android:text="email"
-        app:layout_constraintBottom_toTopOf="@+id/lblDiaChiGiaoHang"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/txtEmail"
-        android:layout_width="206dp"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/btnmomo"
-        android:layout_alignBottom="@+id/btnmomo"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="73dp"
-        android:layout_marginEnd="31dp"
-        android:layout_marginBottom="168dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="example@gmail.com"
-        app:layout_constraintBottom_toTopOf="@+id/lblDiaChi"
-        app:layout_constraintEnd_toEndOf="@+id/txtSdt" />
-
-    <EditText
-        android:id="@+id/txtDiaChi"
-        android:layout_width="224dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/txtEmail"
-        android:layout_alignEnd="@+id/btnmomo"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="-53dp"
-        android:layout_marginBottom="7dp"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintBottom_toBottomOf="@+id/lblDiaChiGiaoHang"
-        app:layout_constraintStart_toEndOf="@+id/lblDiaChiGiaoHang" />
-
-    <TextView
-        android:id="@+id/lblDiaChiGiaoHang"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/recycleViewBillItem"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="-400dp"
-        android:text="địa chỉ" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewBillItem"
+    <!-- Nội dung muốn hiển thị ở đây -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="193dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="114dp"
-        android:layout_marginBottom="424dp" />
+        android:layout_height="match_parent"
+        tools:context=".thanhtoan.ThanhToanActivity">
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/billColumn"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/lblThanhToan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Mặt hàng"
+                android:layout_weight="1"
+                android:gravity="center" android:background="@drawable/border_right"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Số lượng"
+                android:layout_weight="1"
+                android:background="@drawable/border_right"
+                android:gravity="center" />
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Đơn giá"
+                android:layout_weight="1"
+                android:background="@drawable/border_right"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!--    <EditText-->
+        <!--        android:id="@+id/txtSdt"-->
+        <!--        android:layout_width="224dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_above="@+id/btnmomo"-->
+        <!--        android:layout_alignEnd="@+id/txtEmail"-->
+        <!--        android:layout_alignBottom="@+id/btnmomo"-->
+        <!--        android:layout_marginTop="60dp"-->
+        <!--        android:layout_marginEnd="-1dp"-->
+        <!--        android:layout_marginBottom="99dp"-->
+        <!--        android:ems="10"-->
+        <!--        android:inputType="text"-->
+        <!--        android:text="0112345553"-->
+        <!--        app:layout_constraintBottom_toBottomOf="@+id/txtEmail"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toEndOf="@+id/lblSdt" />-->
+
+        <Button
+            android:id="@+id/btnmomo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/inputDiaChiGiaoHang"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="20dp"
+            android:text="Thanh toán và đặt hàng" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="241dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnmomo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/my_button_margin_horizontal"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="@dimen/my_button_margin_horizontal"
+            android:text="Cancel"
+            app:backgroundTint="@color/color_brown" />
+
+        <TextView
+            android:id="@+id/lblThanhToan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="29dp"
+            android:text="xác nhận thanh toán"
+            android:textSize="24sp"
+            android:textStyle="bold"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/lblSdt"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_below="@+id/lblDiaChiGiaoHang"-->
+        <!--        android:layout_alignStart="@+id/lblDiaChiGiaoHang"-->
+        <!--        android:layout_alignLeft="@+id/lblDiaChiGiaoHang"-->
+        <!--        android:layout_alignParentStart="true"-->
+        <!--        android:layout_marginStart="5dp"-->
+        <!--        android:layout_marginLeft="-45dp"-->
+        <!--        android:layout_marginTop="160dp"-->
+        <!--        android:layout_marginEnd="35dp"-->
+        <!--        android:text="số điện thoại"-->
+        <!--        app:layout_constraintEnd_toStartOf="@+id/txtSdt"-->
+        <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/lblEmail"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+
+        <!--        android:layout_below="@+id/lblDiaChiGiaoHang"-->
+        <!--        android:layout_marginStart="44dp"-->
+        <!--        android:layout_marginTop="107dp"-->
+        <!--        android:layout_marginEnd="79dp"-->
+        <!--        android:layout_toStartOf="@+id/txtSdt"-->
+        <!--        android:text="email"-->
+        <!--        app:layout_constraintBottom_toTopOf="@+id/lblDiaChiGiaoHang"-->
+        <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+        <!--    <EditText-->
+        <!--        android:id="@+id/txtEmail"-->
+        <!--        android:layout_width="206dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_alignStart="@+id/btnmomo"-->
+        <!--        android:layout_alignBottom="@+id/btnmomo"-->
+        <!--        android:layout_alignParentEnd="true"-->
+        <!--        android:layout_centerVertical="true"-->
+        <!--        android:layout_marginStart="73dp"-->
+        <!--        android:layout_marginEnd="31dp"-->
+        <!--        android:layout_marginBottom="168dp"-->
+        <!--        android:ems="10"-->
+        <!--        android:inputType="text"-->
+        <!--        android:text="example@gmail.com"-->
+
+        <!--        app:layout_constraintEnd_toEndOf="@+id/txtSdt" />-->
+
+        <!--    <EditText-->
+        <!--        android:id="@+id/txtDiaChi"-->
+        <!--        android:layout_width="224dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_above="@+id/txtEmail"-->
+        <!--        android:layout_alignEnd="@+id/btnmomo"-->
+        <!--        android:layout_marginStart="6dp"-->
+        <!--        android:layout_marginEnd="-53dp"-->
+        <!--        android:layout_marginBottom="7dp"-->
+        <!--        android:ems="10"-->
+        <!--        android:inputType="text"-->
+        <!--        app:layout_constraintBottom_toBottomOf="@+id/lblDiaChiGiaoHang"-->
+        <!--        app:layout_constraintStart_toEndOf="@+id/lblDiaChiGiaoHang" />-->
+
+        <!--    <TextView-->
+        <!--        android:id="@+id/lblDiaChiGiaoHang"-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_below="@+id/recycleViewBillItem"-->
+        <!--        android:layout_alignParentStart="true"-->
+        <!--        android:layout_alignParentLeft="true"-->
+        <!--        android:layout_marginLeft="50dp"-->
+        <!--        android:layout_marginTop="-400dp"-->
+        <!--        android:text="địa chỉ" />-->
+        <LinearLayout
+            android:id="@+id/thongTinTongTien"
+            android:layout_below="@+id/recycleViewBillItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:paddingRight="20dp"
+            android:paddingTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền:" />
+
+            <TextView
+                android:id="@+id/lblTongTien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="100.000 đ" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/inputDiaChiGiaoHang"
+            android:layout_below="@+id/thongTinTongTien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/txtDiaChi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_below="@id/label1"/>
+
+            <TextView
+                android:id="@+id/label2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại"
+                android:layout_marginStart="16dp"
+                android:layout_below="@id/txtDiaChi"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/txtSdt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_below="@id/label2"/>
+
+<!--            <TextView-->
+<!--                android:id="@+id/label3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Email"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_below="@id/txtSdt"-->
+<!--                android:layout_marginTop="16dp"/>-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/txtEmail"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_below="@id/label3"/>-->
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycleViewBillItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/billColumn"
+            android:layout_alignParentStart="true"
+
+            android:layout_marginTop="10dp" />
+
+    </RelativeLayout>
+</ScrollView>
+
