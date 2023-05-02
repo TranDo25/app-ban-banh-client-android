@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".googlemapapi.MapsActivity">
+
+    <SearchView
+        android:id="@+id/txtSearchAddress"
+        android:layout_below="@id/spinnerMapStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="15dp"
+        android:background="@drawable/border_right"
+        android:elevation="5dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search..." />
+    <Button
+        android:id="@+id/btnShowDirection"
+        android:layout_below="@id/txtSearchAddress"
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+        android:text="show đường đi"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/spinnerMapStyle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+     />
+
+    <fragment
+
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnShowDirection" />
+
+</RelativeLayout>

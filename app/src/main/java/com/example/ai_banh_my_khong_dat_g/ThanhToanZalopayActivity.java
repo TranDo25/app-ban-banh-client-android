@@ -1,5 +1,6 @@
 package com.example.ai_banh_my_khong_dat_g;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -24,6 +25,10 @@ import com.example.ai_banh_my_khong_dat_g.api.ApiService;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.MessageDTO;
 import com.example.ai_banh_my_khong_dat_g.zalo.Api.CreateOrder;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import org.json.JSONObject;
 
@@ -134,6 +139,16 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseMessaging.getInstance().subscribeToTopic("thanh_toan_don_hang")
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                String message = "Thanh toán thành công";
+                                if(!task.isSuccessful()){
+                                    message = "Thanh toán thất bại";
+                                }
+                            }
+                        });
                 String token = txtToken.getText().toString();
                 ZaloPaySDK.getInstance().payOrder(ThanhToanZalopayActivity.this, token, "demozpdk://app", new PayOrderListener() {
                     @Override
