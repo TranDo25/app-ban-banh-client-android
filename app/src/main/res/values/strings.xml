@@ -1,6 +1,6 @@
 <resources>
     <string name="number">1</string>
-    <string name="app_name">Croz</string>
+    <string name="app_name">Cửa hàng bánh kem</string>
     <string name="null_string">Null</string>
     <string name="test_string">Test String</string>
 
@@ -15,6 +15,11 @@
     <string name="login_with_facebook">Đăng nhập với Facebook</string>
     <string name="login_with_google">Đăng nhập với Google</string>
     <string name="exit">Thoát</string>
+
+    <string name="facebook_app_id">1234</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">56789</string>
+
 
     <string name="home">Trang chủ</string>
     <string name="cart">Giỏ hàng</string>
@@ -89,5 +94,6 @@
     <string name="btn_pay">Thanh Toán</string>
     <string name="lbl_zptranstoken">zptranstoken</string>
     <string name="to_webview">To WebView</string>
+    <string name="title_activity_maps">MapsActivity</string>
     <!---->
 </resources>

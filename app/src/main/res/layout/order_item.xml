@@ -1,153 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Root"
+    android:id="@+id/OrderItemViewHolder"
+    android:background="@drawable/rounded_corner_32x32x32x32_white_pink"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_corner_32x32x32x32_white_pink"
     tools:ignore="TextSizeCheck">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/ItemImage"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="center"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/rounded_16"
-        app:srcCompat="@drawable/test_image_4" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/TitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/name"
-        android:textColor="@color/text_dark_pink"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ItemImage"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="TextContrastCheck" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/ItemListText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="... và 1 sản phẩm khác"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/TitleText"
-        app:layout_constraintTop_toBottomOf="@+id/TitleText"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:text="Mã đơn hàng:"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/OrderIDTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/orderID_title"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/TotalPriceTitleText"
-        app:layout_constraintStart_toStartOf="@+id/TitleText"
-        tools:ignore="TextContrastCheck" />
+            <TextView
+                android:id="@+id/maDonHang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="DH001" />
 
-    <TextView
-        android:id="@+id/OrderIDText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="#123456"
-        android:textColor="@color/color_brown"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/OrderIDTitleText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/OrderIDTitleText"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/TotalPriceTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/total"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ItemImage"
-        app:layout_constraintStart_toStartOf="@+id/TitleText"
-        tools:ignore="TextContrastCheck" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/IL_TotalPriceTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="end"
-        android:text="123.456 đ"
-        android:textColor="@color/color_brown"
-        android:textSize="12sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/TotalPriceTitleText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/TotalPriceTitleText"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:text="Số tiền:"
+                android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/StateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/order_preparing"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/ItemImage"
-        app:layout_constraintTop_toBottomOf="@+id/ItemImage"
-        tools:ignore="TextContrastCheck" />
+            <TextView
+                android:id="@+id/soTien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="100.000 đ" />
 
-    <TextView
-        android:id="@+id/DateTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Ngày nhận (dự kiến)"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/StateText"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/DateText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="26/03/2023"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/DateTitleText"
-        app:layout_constraintTop_toBottomOf="@+id/DateTitleText"
-        tools:ignore="HardcodedText,TextContrastCheck" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/ActionButton"
-        style="@style/croz_rounded_button"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/follow"
-        android:textSize="10sp"
-        app:backgroundTint="@color/color_brown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DateText"
-        tools:ignore="SmallSp,TouchTargetSizeCheck" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:text="Trạng thái đơn hàng:"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/trangThaiDonHang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="Đang giao hàng" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="8dp"
+                android:text="Ngày tạo đơn:"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ngayTaoDon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="22/04/2023" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

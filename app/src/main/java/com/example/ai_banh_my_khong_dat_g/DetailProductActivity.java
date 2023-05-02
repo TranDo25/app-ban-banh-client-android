@@ -34,6 +34,7 @@ public class DetailProductActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_product);
         moTaSanPham = findViewById(R.id.Description);

@@ -15,12 +15,21 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 
 import com.example.ai_banh_my_khong_dat_g.AnimateDuration;
+import com.example.ai_banh_my_khong_dat_g.adapter.DanhSachSanPhamDemoAdapter;
+import com.example.ai_banh_my_khong_dat_g.api.ApiService;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.databinding.ItemmenuBinding;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestItem;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestItemCategory;
 import com.example.ai_banh_my_khong_dat_g.testmodel.TestListProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.itemcardrecview.ItemCardRecViewAdapter;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.itemfilterrecview.ItemFilterRecViewAdapter;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ItemMenuFragment extends Fragment implements IMainUIFragment {
@@ -44,14 +53,30 @@ public class ItemMenuFragment extends Fragment implements IMainUIFragment {
     public void OnShowed() {}
 
     protected  void setupFilterRV() {
-        ItemFilterRecViewAdapter adapter = new ItemFilterRecViewAdapter(getContext(), TestItemCategory.getList());
-        binding.ItemFilterRecView.setAdapter(adapter);
+        ApiService.apiService.getTenProductWithHighestVote().enqueue(new Callback<List<ProductWithImageDTO>>() {
+            @Override
+            public void onResponse(Call<List<ProductWithImageDTO>> call, Response<List<ProductWithImageDTO>> response) {
+                List<ProductWithImageDTO> listProduct = response.body();
+                ItemFilterRecViewAdapter adapter = new ItemFilterRecViewAdapter(getContext(), TestItemCategory.getList());
+                DanhSachSanPhamDemoAdapter adapter1 = new DanhSachSanPhamDemoAdapter();
+                adapter1.setData(listProduct);
+                binding.ItemFilterRecView.setAdapter(adapter);
 
-        LinearLayoutManager LLM = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        binding.ItemFilterRecView.setLayoutManager(LLM);
-        binding.ItemFilterRecView.setPadding(16, 16, 16, 16);
 
-        originalFilterHeight = binding.ItemFilterRecView.getLayoutParams().height;
+                binding.ItemRecView.setAdapter(adapter1);
+                LinearLayoutManager LLM = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+                binding.ItemFilterRecView.setLayoutManager(LLM);
+                binding.ItemFilterRecView.setPadding(16, 16, 16, 16);
+
+                originalFilterHeight = binding.ItemFilterRecView.getLayoutParams().height;
+            }
+
+            @Override
+            public void onFailure(Call<List<ProductWithImageDTO>> call, Throwable t) {
+
+            }
+        });
+
     }
 
     protected boolean _filterExpanded = true;

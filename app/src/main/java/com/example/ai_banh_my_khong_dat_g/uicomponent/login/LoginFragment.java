@@ -3,6 +3,7 @@ package com.example.ai_banh_my_khong_dat_g.uicomponent.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,13 @@ import com.example.ai_banh_my_khong_dat_g.R;
 import com.example.ai_banh_my_khong_dat_g.databinding.LoginBinding;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.mainui.HomeFragment;
 import com.example.ai_banh_my_khong_dat_g.uicomponent.mainui.MainUIFragment;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -30,10 +38,15 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.Executor;
 
 
 public class LoginFragment extends Fragment {
@@ -45,8 +58,8 @@ public class LoginFragment extends Fragment {
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     private boolean check_login_status = true;
-
-
+//    CallbackManager mCallbackManager;
+//    LoginButton btnLoginWithFacebook;
     public LoginFragment(){
 
     }
@@ -54,8 +67,60 @@ public class LoginFragment extends Fragment {
         binding = LoginBinding.inflate(inflater, container, false);
         setupClickableSwitch();
         setupButton();
+        //initialize facebook sdk
+//        FacebookSdk.sdkInitialize(getActivity());
+        //initialize firebase
+//        mAuth = FirebaseAuth.getInstance();
+        // Initialize Facebook Login button
+//        mCallbackManager = CallbackManager.Factory.create();
+//        LoginButton loginButton = getView().findViewById(R.id.BL_FacebookLoginButton);
+//        loginButton.setReadPermissions("email", "public_profile");
+//        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//
+//                handleFacebookAccessToken(loginResult.getAccessToken());
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//
+//            }
+//
+//            @Override
+//            public void onError(FacebookException error) {
+//
+//            }
+//        });
         return binding.getRoot();
     }
+//    private void handleFacebookAccessToken(AccessToken token) {
+//
+//        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+//        mAuth.signInWithCredential(credential)
+//                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            // Sign in success, update UI with the signed-in user's information
+//                            FirebaseUser user = mAuth.getCurrentUser();
+//                            updateUI(user);
+//                        } else {
+//                            // If sign in fails, display a message to the user.
+//                            Toast.makeText(getActivity(), "Authentication failed.",Toast.LENGTH_SHORT).show();
+//                            updateUI(null);
+//                        }
+//                    }
+//                });
+//    }
+
+//    private void updateUI(FirebaseUser user) {
+//        if(user!=null){
+//            Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_mainUIFragment)
+//        }else{
+//            Toast.makeText(getContext(), "please sign in to continue", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     public void onViewCreated(@NonNull View view, @androidx.annotation.Nullable Bundle savedInstanceState) {

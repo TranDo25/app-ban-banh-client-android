@@ -11,18 +11,22 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.ai_banh_my_khong_dat_g.R;
 import com.example.ai_banh_my_khong_dat_g.adapter.DanhSachSanPhamDemoAdapter;
 import com.example.ai_banh_my_khong_dat_g.api.ApiService;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.DanhSachSPDemo;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
+import com.example.ai_banh_my_khong_dat_g.banner.PhotoBanner;
+import com.example.ai_banh_my_khong_dat_g.banner.PhotoViewPagerAdapter;
 import com.example.ai_banh_my_khong_dat_g.databinding.HomeBinding;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,20 +36,41 @@ public class HomeFragment extends Fragment implements IMainUIFragment {
     protected HomeBinding binding;
     private RecyclerView recyclerView;
     private DanhSachSanPhamDemoAdapter adapter;
-
+    private ViewPager mViewPager;
+    private CircleIndicator mCircleIndicator;
+    private List<PhotoBanner> mListPhotoBanner;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = HomeBinding.inflate(inflater, container, false);
 
         setupSideNavigatorOpenButton();
         setupItemRecyclerView();
+        mViewPager = binding.viewPager;
+        mCircleIndicator = binding.circleIndicator;
+
 //        recyclerView = binding.ItemRecView;
 //        adapter = new DanhSachSanPhamDemoAdapter();
 //        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 //        recyclerView.setLayoutManager(staggeredGridLayoutManager);
 //        adapter.setData(getListDanhSachSPDemo());
+        mListPhotoBanner = getListPhotoBanner();
+        PhotoViewPagerAdapter adapterBanner = new PhotoViewPagerAdapter(mListPhotoBanner);
+        mViewPager.setAdapter(adapterBanner);
+        mCircleIndicator.setViewPager(mViewPager);
         return binding.getRoot();
     }
+
+    private List<PhotoBanner> getListPhotoBanner() {
+        List<PhotoBanner> list = new ArrayList<>();
+        list.add(new PhotoBanner(R.drawable.mainui_logo));
+        list.add(new PhotoBanner(R.drawable.banh_sn_banner_1));
+        list.add(new PhotoBanner(R.drawable.banh_sn_banner_2));
+        list.add(new PhotoBanner(R.drawable.banh_sn_banner_3));
+        list.add(new PhotoBanner(R.drawable.banh_sn_banner_4));
+        list.add(new PhotoBanner(R.drawable.banh_sn_banner_5));
+        return list;
+    }
+
 
     @Override
     public void onDestroyView() {
@@ -60,7 +85,8 @@ public class HomeFragment extends Fragment implements IMainUIFragment {
     protected void setupSideNavigatorOpenButton() {
         binding.OpenSidebarButton.setOnClickListener(MainUIFragment.currentInstance.onOpenSideNavigatorListener());
     }
-    private List<DanhSachSPDemo> getListDanhSachSPDemo(){
+
+    private List<DanhSachSPDemo> getListDanhSachSPDemo() {
         List<DanhSachSPDemo> list = new ArrayList<>();
         DanhSachSPDemo tmp = new DanhSachSPDemo("http://192.168.88.102:8080/api/admin/product/image/banh_sn_danh_dau_thang_do.png", "banh chuoi", 10000);
         DanhSachSPDemo tmp2 = new DanhSachSPDemo("http://192.168.88.102:8080/api/admin/product/image/banhmithapcam.png", "banh dau do", 10000);
@@ -68,6 +94,7 @@ public class HomeFragment extends Fragment implements IMainUIFragment {
         list.add(tmp2);
         return list;
     }
+
     protected void setupItemRecyclerView() {
         ApiService.apiService.getTenProductWithHighestVote().enqueue(
                 new Callback<List<ProductWithImageDTO>>() {

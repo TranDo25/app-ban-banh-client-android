@@ -1,5 +1,6 @@
 package com.example.ai_banh_my_khong_dat_g;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -22,7 +23,12 @@ import androidx.annotation.RequiresApi;
 
 import com.example.ai_banh_my_khong_dat_g.api.ApiService;
 import com.example.ai_banh_my_khong_dat_g.backendmodel.Cart;
+import com.example.ai_banh_my_khong_dat_g.backendmodel.MessageDTO;
 import com.example.ai_banh_my_khong_dat_g.zalo.Api.CreateOrder;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 
 import org.json.JSONObject;
 
@@ -30,6 +36,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vn.zalopay.sdk.ZaloPayError;
 import vn.zalopay.sdk.ZaloPaySDK;
 import vn.zalopay.sdk.Environment;
@@ -86,10 +95,10 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CreateOrder orderApi = new CreateOrder();
-                List<Cart> danhSachCart = new ArrayList<>();
-
-                String sdt = getIntent().getStringExtra("sdt");
-                String diaChiGiaoHang = getIntent().getStringExtra("diaChiGiaoHang");
+//                List<Cart> danhSachCart = new ArrayList<>();
+//
+//                String sdt = getIntent().getStringExtra("sdt");
+//                String diaChiGiaoHang = getIntent().getStringExtra("diaChiGiaoHang");
 //                ApiService.apiService.setThongTinGiaoHang().enqueue(
 //
 //                );
@@ -102,6 +111,21 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
 
                     if (code.equals("1")) {
                         lblZpTransToken.setText("zptranstoken");
+                        String tokenZalopay = data.getString("zp_trans_token");
+                        int idNewestOrder = getIntent().getIntExtra("idNewestOrder",0);
+                        ApiService.apiService.setToken(idNewestOrder, tokenZalopay).enqueue(new Callback<MessageDTO>() {
+                            @Override
+                            public void onResponse(Call<MessageDTO> call, Response<MessageDTO> response) {
+                                String responseMessage = response.body().getMessage();
+                                Toast.makeText(getApplicationContext(), responseMessage, Toast.LENGTH_LONG).show();
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<MessageDTO> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), "error save zalopay token", Toast.LENGTH_LONG).show();
+                            }
+                        });
                         txtToken.setText(data.getString("zp_trans_token"));
                         IsDone();
                     }
@@ -115,6 +139,16 @@ public class ThanhToanZalopayActivity extends AppCompatActivity {
         btnPay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseMessaging.getInstance().subscribeToTopic("thanh_toan_don_hang")
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                String message = "Thanh toán thành công";
+                                if(!task.isSuccessful()){
+                                    message = "Thanh toán thất bại";
+                                }
+                            }
+                        });
                 String token = txtToken.getText().toString();
                 ZaloPaySDK.getInstance().payOrder(ThanhToanZalopayActivity.this, token, "demozpdk://app", new PayOrderListener() {
                     @Override
