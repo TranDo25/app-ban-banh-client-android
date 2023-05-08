@@ -18,7 +18,7 @@ public class PagerNavigatorFSA extends FragmentStateAdapter {
 
         fragmentList.add(fragment.getParentFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), HomeFragment.class.getName()));
         fragmentList.add(fragment.getParentFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), ItemMenuFragment.class.getName()));
-        fragmentList.add(fragment.getParentFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), EmptyFragment.class.getName()));
+        fragmentList.add(fragment.getParentFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), YeuThichFragment.class.getName()));
         fragmentList.add(fragment.getParentFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), CartFragment.class.getName()));
         fragmentList.add(fragment.getParentFragmentManager().getFragmentFactory().instantiate(ClassLoader.getSystemClassLoader(), OrderFragment.class.getName()));
     }

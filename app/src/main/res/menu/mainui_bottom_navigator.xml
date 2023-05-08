@@ -9,24 +9,24 @@
 
     <item
         android:id="@+id/Item"
-        android:icon="@drawable/icon_goods"
+        android:icon="@drawable/baseline_checklist_24"
         android:orderInCategory="1"
         android:title="@string/item_menu" />
 
     <item
         android:id="@+id/Favourite"
-        android:icon="@drawable/icon_account"
+        android:icon="@drawable/icon_heart"
         android:orderInCategory="2"
         android:title="@string/favourite_item" />
 
     <item
         android:id="@+id/Cart"
-        android:icon="@drawable/icon_edit"
+        android:icon="@drawable/baseline_shopping_cart_24"
         android:orderInCategory="3"
         android:title="@string/cart" />
     <item
         android:id="@+id/Order"
-        android:icon="@drawable/icon_orders"
+        android:icon="@drawable/icon_payment"
         android:orderInCategory="4"
         android:title="@string/order" />
 

@@ -86,7 +86,16 @@ public class ThanhToanActivity extends AppCompatActivity {
         btnThanhToan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                String diaChiGiaoHangData = diaChiGiaoHang.getText().toString();
+                String soDienThoaiData = sdt.getText().toString();
+                if (TextUtils.isEmpty(diaChiGiaoHangData)) {
+                    Toast.makeText(getApplicationContext(), "Vui lòng nhập địa chỉ giao hàng", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(soDienThoaiData)) {
+                    Toast.makeText(getApplicationContext(), "Vui lòng nhập số điện thoại", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
                 ApiService.apiService.getListCartByIdUserNew(account.getEmail()).enqueue(new Callback<List<Cart>>() {
                     @Override

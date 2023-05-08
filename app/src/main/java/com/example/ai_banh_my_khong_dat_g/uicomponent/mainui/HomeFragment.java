@@ -1,10 +1,14 @@
 package com.example.ai_banh_my_khong_dat_g.uicomponent.mainui;
 
+import android.content.Intent;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,6 +25,7 @@ import com.example.ai_banh_my_khong_dat_g.backendmodel.ProductWithImageDTO;
 import com.example.ai_banh_my_khong_dat_g.banner.PhotoBanner;
 import com.example.ai_banh_my_khong_dat_g.banner.PhotoViewPagerAdapter;
 import com.example.ai_banh_my_khong_dat_g.databinding.HomeBinding;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 import java.util.ArrayList;
@@ -39,6 +44,21 @@ public class HomeFragment extends Fragment implements IMainUIFragment {
     private ViewPager mViewPager;
     private CircleIndicator mCircleIndicator;
     private List<PhotoBanner> mListPhotoBanner;
+    private Handler mHandler = new Handler();
+    private Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if(mViewPager.getCurrentItem()==mListPhotoBanner.size()-1){
+                mViewPager.setCurrentItem(0);
+
+            }else{
+                mViewPager.setCurrentItem(mViewPager.getCurrentItem()+1);
+
+            }
+
+        }
+    };
+    private FloatingActionButton messengerLink, zaloLink;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = HomeBinding.inflate(inflater, container, false);
@@ -53,10 +73,50 @@ public class HomeFragment extends Fragment implements IMainUIFragment {
 //        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
 //        recyclerView.setLayoutManager(staggeredGridLayoutManager);
 //        adapter.setData(getListDanhSachSPDemo());
+        messengerLink = binding.floatingMessengerButton;
+        messengerLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_VIEW);
+//                intent.setPackage("com.facebook.orca");
+//                intent.setData(Uri.parse("https://m.me/"+"100032796252474"));
+//                startActivity(intent);
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://m.me/tranglovequyen204"));
+                startActivity(i);
+            }
+        });
+        zaloLink = binding.floatingCallButton;
+        zaloLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phone = "0825124160";
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                startActivity(intent);
+            }
+        });
         mListPhotoBanner = getListPhotoBanner();
         PhotoViewPagerAdapter adapterBanner = new PhotoViewPagerAdapter(mListPhotoBanner);
         mViewPager.setAdapter(adapterBanner);
         mCircleIndicator.setViewPager(mViewPager);
+        mHandler.postDelayed(mRunnable,3000);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mHandler.removeCallbacks(mRunnable);
+                mHandler.postDelayed(mRunnable,3000);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return binding.getRoot();
     }
 
