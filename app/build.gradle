@@ -71,4 +71,6 @@ dependencies {
     implementation 'me.relex:circleindicator:2.1.6'
     //facebook
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    //circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

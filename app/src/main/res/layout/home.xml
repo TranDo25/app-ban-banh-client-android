@@ -1,87 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Root"
+    android:id="@+id/scrollHomeViewId"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/LayoutTitleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_toRightOf="@id/OpenSidebarButton"
-        android:text="@string/home"
-        android:textColor="@color/color_dark_pink"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/BannerImage"
+    <RelativeLayout
+        android:id="@+id/Root"
         android:layout_width="match_parent"
-        android:layout_height="183dp"
-        android:layout_below="@id/LayoutTitleText"
-        android:layout_marginTop="52dp"
-        android:scaleType="center"
+        android:layout_height="match_parent">
 
-        />
+        <TextView
+            android:id="@+id/LayoutTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toRightOf="@id/OpenSidebarButton"
+            android:text="@string/home"
+            android:textColor="@color/color_dark_pink"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="182dp"
-        android:layout_below="@id/LayoutTitleText"
+        <ImageView
+            android:id="@+id/BannerImage"
+            android:layout_width="match_parent"
+            android:layout_height="183dp"
+            android:layout_below="@id/LayoutTitleText"
+            android:layout_marginTop="52dp"
+            android:scaleType="center"
 
-        android:layout_marginTop="10dp" />
+            />
 
-    <me.relex.circleindicator.CircleIndicator
-        android:id="@+id/circle_indicator"
-        android:layout_width="101dp"
-        android:layout_height="34dp"
-        android:layout_below="@id/viewPager"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        app:ci_drawable="@drawable/bg_indicator" />
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="182dp"
+            android:layout_below="@id/LayoutTitleText"
 
-    <TextView
-        android:id="@+id/FilterTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/circle_indicator"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:text="@string/best_sell"
-        android:textColor="@color/text_brown"
-        android:textSize="24sp" />
+            android:layout_marginTop="10dp" />
 
-    <TextView
-        android:id="@+id/BestSellText2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/FilterTitle"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:text="@string/this_week"
-        android:textColor="#D32F2F" />
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/circle_indicator"
+            android:layout_width="101dp"
+            android:layout_height="34dp"
+            android:layout_below="@id/viewPager"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            app:ci_drawable="@drawable/bg_indicator" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ItemRecView"
-        android:layout_width="match_parent"
-        android:layout_height="484dp"
-        android:layout_below="@id/FilterTitle"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/color_white" />
+        <TextView
+            android:id="@+id/FilterTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/circle_indicator"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/best_sell"
+            android:textColor="@color/text_brown"
+            android:textSize="24sp" />
 
-    <ImageView
-        android:id="@+id/OpenSidebarButton"
-        android:layout_width="@dimen/icon_size_3"
-        android:layout_height="@dimen/icon_size_3"
-        android:layout_marginLeft="10dp"
-        android:background="@drawable/icon_customize"
-        android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/BestSellText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/FilterTitle"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:text="@string/this_week"
+            android:textColor="#D32F2F" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ItemRecView"
+            android:layout_width="match_parent"
+            android:layout_height="484dp"
+            android:layout_below="@id/FilterTitle"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/color_white" />
+
+        <ImageView
+            android:id="@+id/OpenSidebarButton"
+            android:layout_width="@dimen/icon_size_3"
+            android:layout_height="@dimen/icon_size_3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/icon_customize" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingMessengerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/ItemRecView"
+            android:layout_alignTop="@+id/ItemRecView"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="278dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:srcCompat="@drawable/messenger_bubble_large_white" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingCallButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/ItemRecView"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="287dp"
+            android:layout_marginTop="279dp"
+            android:backgroundTint="@color/white"
+            android:clickable="true"
+            app:srcCompat="@drawable/baseline_phone_24" />
+
+        <!--        <LinearLayout-->
+<!--            android:id="@+id/footer"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:background="@color/color_brown"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/store_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:text="Cửa hàng bánh kem"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/address"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:text="ngõ 36 Ao Sen"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="16sp" />-->
+
+<!--            <View-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="0dp"-->
+<!--                android:layout_weight="1" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/messenger_link"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="8dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+
+<!--                android:src="@drawable/messenger_bubble_large_white" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/zalo_link"-->
+<!--                android:layout_width="32dp"-->
+<!--                android:layout_height="32dp"-->
+<!--                android:layout_marginTop="8dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:layout_marginBottom="8dp"-->
+<!--                android:src="@drawable/baseline_phone_24" />-->
+
+<!--        </LinearLayout>-->
+    </RelativeLayout>
 </RelativeLayout>

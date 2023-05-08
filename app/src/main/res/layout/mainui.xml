@@ -82,14 +82,16 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText,TouchTargetSizeCheck,TextContrastCheck" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
             android:id="@+id/SN_UserImage"
             android:layout_width="125dp"
             android:layout_height="125dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_corner_96x96x96x96_dark_pink"
-            android:src="@drawable/icon_bugreport"
+            android:src="@drawable/anh_gai_banh_sinh_nhat_2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/icon_bugreport"

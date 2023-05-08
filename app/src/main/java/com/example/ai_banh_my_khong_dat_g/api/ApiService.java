@@ -107,4 +107,8 @@ public interface ApiService {
     Call<List<Orders>> getAllOrderByIdUser(@Query("idUser") String idUser);
     @GET("/cart/deleteCartItem")
     Call<MessageDTO> deleteCartItemById(@Query("idCart") int idCart);
+    @GET("/api/getListSanPhamYeuThichByIdUser")
+    Call<List<ProductWithImageDTO>> getListSanPhamYeuThichByIdUser(@Query("userId") String userId);
+    @GET("/api/addSanPhamYeuThich")
+    Call<MessageDTO> addSanPhamYeuThich(@Query("userId") String userId, @Query("product_id") int product_id);
 }

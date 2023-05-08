@@ -58,8 +58,8 @@ public class LoginFragment extends Fragment {
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
     private boolean check_login_status = true;
-//    CallbackManager mCallbackManager;
-//    LoginButton btnLoginWithFacebook;
+    CallbackManager mCallbackManager;
+    LoginButton btnLoginWithFacebook;
     public LoginFragment(){
 
     }
@@ -94,33 +94,33 @@ public class LoginFragment extends Fragment {
 //        });
         return binding.getRoot();
     }
-//    private void handleFacebookAccessToken(AccessToken token) {
-//
-//        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
-//        mAuth.signInWithCredential(credential)
-//                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//                            updateUI(user);
-//                        } else {
-//                            // If sign in fails, display a message to the user.
-//                            Toast.makeText(getActivity(), "Authentication failed.",Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
-//                        }
-//                    }
-//                });
-//    }
+    private void handleFacebookAccessToken(AccessToken token) {
 
-//    private void updateUI(FirebaseUser user) {
-//        if(user!=null){
-//            Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_mainUIFragment)
-//        }else{
-//            Toast.makeText(getContext(), "please sign in to continue", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(getActivity(), "Authentication failed.",Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
+    }
+
+    private void updateUI(FirebaseUser user) {
+        if(user!=null){
+            Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_mainUIFragment);
+        }else{
+            Toast.makeText(getContext(), "please sign in to continue", Toast.LENGTH_SHORT).show();
+        }
+    }
 
     @Override
     public void onViewCreated(@NonNull View view, @androidx.annotation.Nullable Bundle savedInstanceState) {
