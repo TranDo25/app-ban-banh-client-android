@@ -3,8 +3,8 @@ tạo ngày 20 tháng 4
 dự án android về xây dựng app bán bánh
 client viết bằng android
 ## cách run project
-* cấu hình lại external IP theo domain của server
-* clone project về và run
+* cấu hình lại external IP theo domain của server trong file client config
+* clone project về và run trên Android Studio
 ## một số hình ảnh sản phẩm
 * giao diện chính
 * 
